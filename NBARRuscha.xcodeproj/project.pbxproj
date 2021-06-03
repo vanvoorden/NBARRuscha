@@ -3,16 +3,22 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		AE3C514326684B3A0043E3D1 /* NBARRuschaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C514226684B3A0043E3D1 /* NBARRuschaApp.swift */; };
-		AE3C514526684B3A0043E3D1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C514426684B3A0043E3D1 /* ContentView.swift */; };
-		AE3C514726684B3B0043E3D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE3C514626684B3B0043E3D1 /* Assets.xcassets */; };
-		AE3C514A26684B3B0043E3D1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE3C514926684B3B0043E3D1 /* Preview Assets.xcassets */; };
 		AE3C515526684B3B0043E3D1 /* NBARRuschaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C515426684B3B0043E3D1 /* NBARRuschaTests.swift */; };
 		AE3C516026684B3B0043E3D1 /* NBARRuschaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C515F26684B3B0043E3D1 /* NBARRuschaUITests.swift */; };
+		AE3C517826684BF40043E3D1 /* NBARWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C516F26684BF30043E3D1 /* NBARWebView.swift */; };
+		AE3C517B26684BF40043E3D1 /* NBARJSONTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C517226684BF30043E3D1 /* NBARJSONTask.swift */; };
+		AE3C517C26684BF40043E3D1 /* NBARImageTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C517326684BF40043E3D1 /* NBARImageTask.swift */; };
+		AE3C517D26684BF40043E3D1 /* NBARRuschaPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C517426684BF40043E3D1 /* NBARRuschaPicker.swift */; };
+		AE3C517E26684BF40043E3D1 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE3C517526684BF40043E3D1 /* Launch Screen.storyboard */; };
+		AE3C517F26684BF40043E3D1 /* Getty.png in Resources */ = {isa = PBXBuildFile; fileRef = AE3C517626684BF40043E3D1 /* Getty.png */; };
+		AE3C518026684BF40043E3D1 /* NBARRuschaDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C517726684BF40043E3D1 /* NBARRuschaDataModel.swift */; };
+		AE513D3E2668A82E00ADB6E6 /* NBARKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE513D3C2668A82200ADB6E6 /* NBARKit.xcframework */; };
+		AE513D3F2668A82E00ADB6E6 /* NBARKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE513D3C2668A82200ADB6E6 /* NBARKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,12 +38,27 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		AE513CF62668A04000ADB6E6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AE513D3F2668A82E00ADB6E6 /* NBARKit.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		AE065FEB2668C20B0096C79C /* ACKNOWLEDGMENTS.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ACKNOWLEDGMENTS.txt; sourceTree = "<group>"; };
+		AE065FEC2668C20B0096C79C /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		AE065FED2668C2130096C79C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		AE065FEE2668C2DF0096C79C /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		AE3C513F26684B3A0043E3D1 /* NBARRuscha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NBARRuscha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE3C514226684B3A0043E3D1 /* NBARRuschaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBARRuschaApp.swift; sourceTree = "<group>"; };
-		AE3C514426684B3A0043E3D1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		AE3C514626684B3B0043E3D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		AE3C514926684B3B0043E3D1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AE3C514B26684B3B0043E3D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE3C515026684B3B0043E3D1 /* NBARRuschaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NBARRuschaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE3C515426684B3B0043E3D1 /* NBARRuschaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBARRuschaTests.swift; sourceTree = "<group>"; };
@@ -45,6 +66,14 @@
 		AE3C515B26684B3B0043E3D1 /* NBARRuschaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NBARRuschaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE3C515F26684B3B0043E3D1 /* NBARRuschaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBARRuschaUITests.swift; sourceTree = "<group>"; };
 		AE3C516126684B3B0043E3D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE3C516F26684BF30043E3D1 /* NBARWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARWebView.swift; sourceTree = "<group>"; };
+		AE3C517226684BF30043E3D1 /* NBARJSONTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARJSONTask.swift; sourceTree = "<group>"; };
+		AE3C517326684BF40043E3D1 /* NBARImageTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARImageTask.swift; sourceTree = "<group>"; };
+		AE3C517426684BF40043E3D1 /* NBARRuschaPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARRuschaPicker.swift; sourceTree = "<group>"; };
+		AE3C517526684BF40043E3D1 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		AE3C517626684BF40043E3D1 /* Getty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Getty.png; sourceTree = "<group>"; };
+		AE3C517726684BF40043E3D1 /* NBARRuschaDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARRuschaDataModel.swift; sourceTree = "<group>"; };
+		AE513D3C2668A82200ADB6E6 /* NBARKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = NBARKit.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE513D3E2668A82E00ADB6E6 /* NBARKit.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,13 +102,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AE065FEA2668C20B0096C79C /* LICENSE */ = {
+			isa = PBXGroup;
+			children = (
+				AE065FEB2668C20B0096C79C /* ACKNOWLEDGMENTS.txt */,
+				AE065FEC2668C20B0096C79C /* LICENSE.txt */,
+			);
+			path = LICENSE;
+			sourceTree = "<group>";
+		};
+		AE1E1BD62668709100CBA366 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AE513D3C2668A82200ADB6E6 /* NBARKit.xcframework */,
+				AE065FEE2668C2DF0096C79C /* LICENSE.txt */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
 		AE3C513626684B3A0043E3D1 = {
 			isa = PBXGroup;
 			children = (
+				AE1E1BD62668709100CBA366 /* Frameworks */,
+				AE065FEA2668C20B0096C79C /* LICENSE */,
 				AE3C514126684B3A0043E3D1 /* NBARRuscha */,
 				AE3C515326684B3B0043E3D1 /* NBARRuschaTests */,
 				AE3C515E26684B3B0043E3D1 /* NBARRuschaUITests */,
 				AE3C514026684B3A0043E3D1 /* Products */,
+				AE065FED2668C2130096C79C /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,21 +146,17 @@
 		AE3C514126684B3A0043E3D1 /* NBARRuscha */ = {
 			isa = PBXGroup;
 			children = (
-				AE3C514226684B3A0043E3D1 /* NBARRuschaApp.swift */,
-				AE3C514426684B3A0043E3D1 /* ContentView.swift */,
-				AE3C514626684B3B0043E3D1 /* Assets.xcassets */,
+				AE3C517626684BF40043E3D1 /* Getty.png */,
 				AE3C514B26684B3B0043E3D1 /* Info.plist */,
-				AE3C514826684B3B0043E3D1 /* Preview Content */,
+				AE3C517526684BF40043E3D1 /* Launch Screen.storyboard */,
+				AE3C517326684BF40043E3D1 /* NBARImageTask.swift */,
+				AE3C517226684BF30043E3D1 /* NBARJSONTask.swift */,
+				AE3C514226684B3A0043E3D1 /* NBARRuschaApp.swift */,
+				AE3C517726684BF40043E3D1 /* NBARRuschaDataModel.swift */,
+				AE3C517426684BF40043E3D1 /* NBARRuschaPicker.swift */,
+				AE3C516F26684BF30043E3D1 /* NBARWebView.swift */,
 			);
 			path = NBARRuscha;
-			sourceTree = "<group>";
-		};
-		AE3C514826684B3B0043E3D1 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				AE3C514926684B3B0043E3D1 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		AE3C515326684B3B0043E3D1 /* NBARRuschaTests */ = {
@@ -140,6 +187,7 @@
 				AE3C513B26684B3A0043E3D1 /* Sources */,
 				AE3C513C26684B3A0043E3D1 /* Frameworks */,
 				AE3C513D26684B3A0043E3D1 /* Resources */,
+				AE513CF62668A04000ADB6E6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -233,8 +281,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE3C514A26684B3B0043E3D1 /* Preview Assets.xcassets in Resources */,
-				AE3C514726684B3B0043E3D1 /* Assets.xcassets in Resources */,
+				AE3C517E26684BF40043E3D1 /* Launch Screen.storyboard in Resources */,
+				AE3C517F26684BF40043E3D1 /* Getty.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,8 +307,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE3C514526684B3A0043E3D1 /* ContentView.swift in Sources */,
+				AE3C518026684BF40043E3D1 /* NBARRuschaDataModel.swift in Sources */,
+				AE3C517826684BF40043E3D1 /* NBARWebView.swift in Sources */,
 				AE3C514326684B3A0043E3D1 /* NBARRuschaApp.swift in Sources */,
+				AE3C517D26684BF40043E3D1 /* NBARRuschaPicker.swift in Sources */,
+				AE3C517B26684BF40043E3D1 /* NBARJSONTask.swift in Sources */,
+				AE3C517C26684BF40043E3D1 /* NBARImageTask.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,7 +399,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -402,7 +454,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -415,10 +467,8 @@
 		AE3C516526684B3B0043E3D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"NBARRuscha/Preview Content\"";
 				DEVELOPMENT_TEAM = WLPE3F9YYB;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = NBARRuscha/Info.plist;
@@ -427,6 +477,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.northbronson.NBARRuscha;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -437,10 +488,8 @@
 		AE3C516626684B3B0043E3D1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"NBARRuscha/Preview Content\"";
 				DEVELOPMENT_TEAM = WLPE3F9YYB;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = NBARRuscha/Info.plist;
@@ -449,6 +498,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.northbronson.NBARRuscha;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

@@ -2,8 +2,6 @@
 //  NBARRuschaUITests.swift
 //  NBARRuschaUITests
 //
-//  Created by Rick Van Voorden on 6/2/21.
-//
 
 import XCTest
 
