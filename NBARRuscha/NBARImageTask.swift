@@ -14,17 +14,17 @@
 import Foundation
 import UIKit
 
-func ImageTask(for string: String, completionHandler: @escaping (UIImage?, URLResponse?, Error?) -> Void) -> URLSessionDataTask? {
-  if let url = URL(string: string) {
-    let request = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad)
-    let task = URLSession.shared.dataTask(with: request) { result, response, error in
+extension URLSession {
+  //  MARK: -
+  func imageTask(with request: URLRequest, completionHandler: @escaping (UIImage?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+    let task = self.dataTask(with: request) { result, response, error in
       if let error = error {
         completionHandler(nil, response, error)
       } else {
         if let response = response as? HTTPURLResponse,
            (200...299).contains(response.statusCode),
-           let mimeType = response.mimeType?.lowercased(),
-           mimeType.contains("image"),
+           let mimeType = response.mimeType,
+           mimeType.lowercased().contains("image"),
            let result = result {
           let image = UIImage(data: result)
           completionHandler(image, response, error)
@@ -33,10 +33,18 @@ func ImageTask(for string: String, completionHandler: @escaping (UIImage?, URLRe
         }
       }
     }
-    
-    task.resume()
     return task
   }
   
-  return nil
+  func imageTask(with string: String, completionHandler: @escaping (UIImage?, URLResponse?, Error?) -> Void) -> URLSessionDataTask? {
+    if let url = URL(string: string) {
+      return self.imageTask(with: url, completionHandler: completionHandler)
+    }
+    return nil
+  }
+  
+  func imageTask(with url: URL, completionHandler: @escaping (UIImage?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+    let request = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad)
+    return self.imageTask(with: request, completionHandler: completionHandler)
+  }
 }

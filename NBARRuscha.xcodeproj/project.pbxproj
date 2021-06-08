@@ -10,7 +10,7 @@
 		AE3C514326684B3A0043E3D1 /* NBARRuschaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C514226684B3A0043E3D1 /* NBARRuschaApp.swift */; };
 		AE3C515526684B3B0043E3D1 /* NBARRuschaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C515426684B3B0043E3D1 /* NBARRuschaTests.swift */; };
 		AE3C516026684B3B0043E3D1 /* NBARRuschaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C515F26684B3B0043E3D1 /* NBARRuschaUITests.swift */; };
-		AE3C517826684BF40043E3D1 /* NBARWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C516F26684BF30043E3D1 /* NBARWebView.swift */; };
+		AE3C517826684BF40043E3D1 /* NBARRuschaWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C516F26684BF30043E3D1 /* NBARRuschaWebView.swift */; };
 		AE3C517B26684BF40043E3D1 /* NBARJSONTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C517226684BF30043E3D1 /* NBARJSONTask.swift */; };
 		AE3C517C26684BF40043E3D1 /* NBARImageTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C517326684BF40043E3D1 /* NBARImageTask.swift */; };
 		AE3C517D26684BF40043E3D1 /* NBARRuschaPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C517426684BF40043E3D1 /* NBARRuschaPicker.swift */; };
@@ -66,7 +66,7 @@
 		AE3C515B26684B3B0043E3D1 /* NBARRuschaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NBARRuschaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE3C515F26684B3B0043E3D1 /* NBARRuschaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBARRuschaUITests.swift; sourceTree = "<group>"; };
 		AE3C516126684B3B0043E3D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AE3C516F26684BF30043E3D1 /* NBARWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARWebView.swift; sourceTree = "<group>"; };
+		AE3C516F26684BF30043E3D1 /* NBARRuschaWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARRuschaWebView.swift; sourceTree = "<group>"; };
 		AE3C517226684BF30043E3D1 /* NBARJSONTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARJSONTask.swift; sourceTree = "<group>"; };
 		AE3C517326684BF40043E3D1 /* NBARImageTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARImageTask.swift; sourceTree = "<group>"; };
 		AE3C517426684BF40043E3D1 /* NBARRuschaPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARRuschaPicker.swift; sourceTree = "<group>"; };
@@ -114,8 +114,8 @@
 		AE1E1BD62668709100CBA366 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AE513D3C2668A82200ADB6E6 /* NBARKit.xcframework */,
 				AE065FEE2668C2DF0096C79C /* LICENSE.txt */,
+				AE513D3C2668A82200ADB6E6 /* NBARKit.xcframework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -154,7 +154,7 @@
 				AE3C514226684B3A0043E3D1 /* NBARRuschaApp.swift */,
 				AE3C517726684BF40043E3D1 /* NBARRuschaDataModel.swift */,
 				AE3C517426684BF40043E3D1 /* NBARRuschaPicker.swift */,
-				AE3C516F26684BF30043E3D1 /* NBARWebView.swift */,
+				AE3C516F26684BF30043E3D1 /* NBARRuschaWebView.swift */,
 			);
 			path = NBARRuscha;
 			sourceTree = "<group>";
@@ -308,7 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE3C518026684BF40043E3D1 /* NBARRuschaDataModel.swift in Sources */,
-				AE3C517826684BF40043E3D1 /* NBARWebView.swift in Sources */,
+				AE3C517826684BF40043E3D1 /* NBARRuschaWebView.swift in Sources */,
 				AE3C514326684B3A0043E3D1 /* NBARRuschaApp.swift in Sources */,
 				AE3C517D26684BF40043E3D1 /* NBARRuschaPicker.swift in Sources */,
 				AE3C517B26684BF40043E3D1 /* NBARJSONTask.swift in Sources */,
@@ -469,6 +469,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = WLPE3F9YYB;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = NBARRuscha/Info.plist;
@@ -477,7 +478,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.northbronson.NBARRuscha;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -490,6 +491,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = WLPE3F9YYB;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = NBARRuscha/Info.plist;
@@ -498,7 +500,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.northbronson.NBARRuscha;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

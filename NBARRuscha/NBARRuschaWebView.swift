@@ -1,5 +1,5 @@
 //
-//  NBARWebView.swift
+//  NBARRuschaWebView.swift
 //  NBARRuscha
 //
 //  Copyright © 2021 North Bronson Software
@@ -14,12 +14,15 @@
 import SafariServices
 import SwiftUI
 
-struct NBARWebView : UIViewControllerRepresentable {
+struct NBARRuschaWebView : UIViewControllerRepresentable {
+  //  MARK: -
+  private let url: URL
   
   //  MARK: -
-  let url: URL
   
-  //  MARK: -
+  init(url: URL) {
+    self.url = url
+  }
   
   func makeUIViewController(context: Context) -> SFSafariViewController {
     return SFSafariViewController(url: self.url)

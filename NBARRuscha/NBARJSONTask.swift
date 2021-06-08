@@ -13,17 +13,17 @@
 
 import Foundation
 
-func JSONTask(for string: String, completionHandler: @escaping (Any?, URLResponse?, Error?) -> Void) -> URLSessionDataTask? {
-  if let url = URL(string: string) {
-    let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData)
-    let task = URLSession.shared.dataTask(with: request) { result, response, error in
+extension URLSession {
+  //  MARK: -
+  func jsonTask(with request: URLRequest, completionHandler: @escaping (Any?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+    let task = self.dataTask(with: request) { result, response, error in
       if let error = error {
         completionHandler(nil, response, error)
       } else {
         if let response = response as? HTTPURLResponse,
            (200...299).contains(response.statusCode),
            let mimeType = response.mimeType,
-           mimeType.contains("json"),
+           mimeType.lowercased().contains("json"),
            let result = result {
           do {
             let json = try JSONSerialization.jsonObject(with: result, options: [])
@@ -36,10 +36,18 @@ func JSONTask(for string: String, completionHandler: @escaping (Any?, URLRespons
         }
       }
     }
-    
-    task.resume()
     return task
   }
   
-  return nil
+  func jsonTask(with string: String, completionHandler: @escaping (Any?, URLResponse?, Error?) -> Void) -> URLSessionDataTask? {
+    if let url = URL(string: string) {
+      return self.jsonTask(with: url, completionHandler: completionHandler)
+    }
+    return nil
+  }
+  
+  func jsonTask(with url: URL, completionHandler: @escaping (Any?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+    let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData)
+    return self.jsonTask(with: request, completionHandler: completionHandler)
+  }
 }

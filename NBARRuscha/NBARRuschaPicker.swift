@@ -12,6 +12,7 @@
 //
 
 import Combine
+import CoreLocation
 import SwiftUI
 
 private let NBARRuschaPickerArray = [
@@ -174,10 +175,10 @@ private struct NBARRuschaPickerSectionDataModel : Identifiable {
 
 private struct NBARRuschaPickerRow : View {
   //  MARK: -
-  let model: NBARRuschaPickerRowDataModel
+  private let model: NBARRuschaPickerRowDataModel
   
-  var downloading = false
-  var progress = 0.0
+  private var downloading: Bool
+  private var progress: Double
   
   var body: some View {
     VStack(
@@ -214,33 +215,40 @@ private struct NBARRuschaPickerRow : View {
       8.0
     )
   }
+  
+  //  MARK: -
+  
+  init(model: NBARRuschaPickerRowDataModel, downloading: Bool, progress: Double) {
+    self.model = model
+    self.downloading = downloading
+    self.progress = progress
+  }
 }
 
 //  MARK: -
 
 private struct NBARRuschaPickerAboutRow : View {
   //  MARK: -
-  let text: String
+  private let text: String
   
   var body: some View {
     ZStack(alignment: .leading) {
-      Color(
-        .systemBackground
-      )
+      Color(.systemBackground)
       HStack {
         Text(self.text)
         Spacer()
-        Label(
-          "safari",
-          systemImage: "safari"
-        ).labelStyle(
-          IconOnlyLabelStyle()
-        )
+        Image(systemName: "safari")
       }
     }.padding(
       .vertical,
       8.0
     )
+  }
+  
+  //  MARK: -
+  
+  init(text: String) {
+    self.text = text
   }
 }
 
@@ -248,14 +256,12 @@ private struct NBARRuschaPickerAboutRow : View {
 
 private struct NBARRuschaPickerAboutSheet : View {
   //  MARK: -
-  @Binding var url: URL?
-  @Binding var isSheetPresented: Bool
+  @Binding private var url: URL?
+  @Binding private var isSheetPresented: Bool
   
   var body: some View {
     if let url = self.url {
-      NBARWebView(
-        url: url
-      )
+      NBARRuschaWebView(url: url)
     } else {
       Color(
         .systemBackground
@@ -264,13 +270,20 @@ private struct NBARRuschaPickerAboutSheet : View {
       }
     }
   }
+  
+  //  MARK: -
+  
+  init(url: Binding<URL?>, isSheetPresented: Binding<Bool>) {
+    self._url = url
+    self._isSheetPresented = isSheetPresented
+  }
 }
 
 //  MARK: -
 
 private struct NBARRuschaPickerThanksRow : View {
   //  MARK: -
-  let text: String
+  private let text: String
   
   var body: some View {
     HStack {
@@ -282,13 +295,32 @@ private struct NBARRuschaPickerThanksRow : View {
       8.0
     )
   }
+  
+  //  MARK: -
+  
+  init(text: String) {
+    self.text = text
+  }
+}
+
+//  MARK: -
+
+struct NBARRuschaPickerResult {
+  //  MARK: -
+  let id: UUID
+  let altitude: CLLocationDistance?
+  let coordinate: CLLocationCoordinate2D
+  let course: CLLocationDirection
+  let image: String
+  let pixelHeight: Int?
+  let pixelWidth: Int?
 }
 
 //  MARK: -
 
 struct NBARRuschaPicker : View {
   //  MARK: -
-  let didFinishPicking: (String?, Any) -> Void
+  private let didFinishPicking: (String?, Array<NBARRuschaPickerResult>) -> Void
   
   @StateObject private var model = NBARRuschaPickerDataModel.shared
   
@@ -349,7 +381,10 @@ struct NBARRuschaPicker : View {
             text: "Thanks"
           )
         }
-      }.sheet(
+      }.environment(\.editMode, .constant(.active)
+      ).navigationTitle(
+        "Ruscha AR 0.2"
+      ).sheet(
         isPresented: self.$isSheetPresented
       ) {
         NBARRuschaPickerAboutSheet(
@@ -376,13 +411,12 @@ struct NBARRuschaPicker : View {
             action: {
               if let selection = self.selection {
                 self.didAdd = true
-                self.model.requestAnchors(for: selection) { result, error in
-                  if let result = result,
-                     self.isSheetPresented == false {
+                self.model.request(for: selection) { results, error in
+                  if self.isSheetPresented == false {
                     if self.didDismiss == false {
                       self.didDismiss = true
                       let title = NBARRuschaPickerDictionary[selection]?["title"]
-                      self.didFinishPicking(title, result)
+                      self.didFinishPicking(title, results)
                     }
                   } else {
                     self.didAdd = false
@@ -394,14 +428,8 @@ struct NBARRuschaPicker : View {
             self.selection == nil || self.didAdd == true || self.model.downloadingDictionary.count != 0
           )
         }
-      }.navigationTitle(
-        "Ruscha AR 0.1"
-      ).environment(
-        \.editMode,
-        .constant(.active)
-      )
-    }
-    .navigationViewStyle(
+      }
+    }.navigationViewStyle(
       StackNavigationViewStyle()
     ).onChange(
       of: self.scenePhase
@@ -409,16 +437,51 @@ struct NBARRuschaPicker : View {
       //  TODO: LOCAL NOTIFICATION WHEN DOWNLOAD COMPLETES
     }
   }
+  
+  //  MARK: -
+  
+  init(didFinishPicking: @escaping (String?, Array<NBARRuschaPickerResult>) -> Void) {
+    self.didFinishPicking = didFinishPicking
+  }
 }
 
 //  MARK: -
 
-private func ReadLocalJSON(_ string: String, completionHandler: @escaping (Any?, Error?) -> Void) {
+private func ParseJSON(_ json: Any?, completionHandler: @escaping (Array<NBARRuschaPickerResult>) -> Void) {
+  DispatchQueue.global().async {
+    var results = Array<NBARRuschaPickerResult>()
+    if let array = (json as? Array<Dictionary<String, Any>>),
+       array.count != 0 {
+      for dictionary in array {
+        if let bearing = dictionary["bearing"] as? Double,
+           let image = dictionary["manifest_id"] as? String,
+           let latitude = dictionary["latitude"] as? Double,
+           let longitude = dictionary["longitude"] as? Double {
+          let coordinate = CLLocationCoordinate2DMake(latitude, longitude)
+          if CLLocationCoordinate2DIsValid(coordinate) {
+            var course = (bearing - 90.0)
+            if course < 0.0 {
+              course += 360.0
+            }
+            if 359.9 < course {
+              course = 359.9
+            }
+            let result = NBARRuschaPickerResult(id: UUID(), altitude: nil, coordinate: coordinate, course: course, image: image, pixelHeight: nil, pixelWidth: nil)
+            results.append(result)
+          }
+        }
+      }
+    }
+    completionHandler(results)
+  }
+}
+
+private func ReadLocalJSON(_ name: String, completionHandler: @escaping (Any?, Error?) -> Void) {
   DispatchQueue.global().async {
     do {
       let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
       let jsonDirectory = documentDirectory.appendingPathComponent("JSON", isDirectory: true)
-      let url = jsonDirectory.appendingPathComponent(string).appendingPathExtension("json")
+      let url = jsonDirectory.appendingPathComponent(name).appendingPathExtension("json")
       let data = try Data(contentsOf: url)
       let json = try JSONSerialization.jsonObject(with: data, options: [])
       completionHandler(json, nil)
@@ -428,14 +491,14 @@ private func ReadLocalJSON(_ string: String, completionHandler: @escaping (Any?,
   }
 }
 
-private func WriteLocalJSON(_ string: String, json: Any, completionHandler: @escaping (Bool, Error?) -> Void) {
+private func WriteLocalJSON(_ name: String, json: Any, completionHandler: @escaping (Bool, Error?) -> Void) {
   DispatchQueue.global().async {
     do {
       let data = try JSONSerialization.data(withJSONObject: json, options: [.prettyPrinted, .withoutEscapingSlashes])
       let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
       let jsonDirectory = documentDirectory.appendingPathComponent("JSON", isDirectory: true)
       try FileManager.default.createDirectory(at: jsonDirectory, withIntermediateDirectories: true, attributes: nil)
-      let url = jsonDirectory.appendingPathComponent(string).appendingPathExtension("json")
+      let url = jsonDirectory.appendingPathComponent(name).appendingPathExtension("json")
       try data.write(to: url, options: [.atomic])
       completionHandler(true, nil)
     } catch {
@@ -454,14 +517,11 @@ private final class NBARRuschaPickerDataModel : ObservableObject {
   @Published var progressDictionary = Dictionary<String, Double>()
   
   private var publishersDictionary = Dictionary<String, AnyCancellable>()
-  private var requestsDictionary = Dictionary<String, NBARRuschaPickerDataModelAnchorsRequest>()
-}
-
-//  MARK: -
-
-private extension NBARRuschaPickerDataModel {
+  private var requestsDictionary = Dictionary<String, NBARRuschaPickerDataModelJSONRequest>()
+  
   //  MARK: -
-  func requestAnchors(for manifest: String, resultHandler: @escaping (Any?, Dictionary<AnyHashable, Any>?) -> Void) {
+  
+  func request(for manifest: String, resultHandler: @escaping (Array<NBARRuschaPickerResult>, Dictionary<AnyHashable, Any>?) -> Void) {
     ReadLocalJSON(manifest) { [weak self] result, error in
       if let error = error {
         if let error = error as NSError? {
@@ -472,37 +532,42 @@ private extension NBARRuschaPickerDataModel {
           print(error)
         }
         
-        DispatchQueue.main.async { [weak self] in
+        DispatchQueue.main.async {
           if let self = self {
             if self.requestsDictionary[manifest] == nil {
-              let request = NBARRuschaPickerDataModelAnchorsRequest(manifest)
+              let request = NBARRuschaPickerDataModelJSONRequest(manifest)
               self.requestsDictionary[manifest] = request
               self.downloadingDictionary[manifest] = true
-              self.publishersDictionary[manifest] = request.$progress.sink() { progress in
-                self.progressDictionary[manifest] = progress
+              self.publishersDictionary[manifest] = request.$progress.sink() { [weak self] progress in
+                self?.progressDictionary[manifest] = progress
               }
-              request.request { [weak self] result, error in
+              request.request { result, error in
                 if let result = result {
-                  WriteLocalJSON(manifest, json: result, completionHandler: { success, error in
+                  WriteLocalJSON(manifest, json: result) { success, error in
                     if let error = error {
                       print(error)
                     }
-                  })
+                  }
                 }
-                DispatchQueue.main.async { [weak self] in
-                  self?.requestsDictionary[manifest] = request
-                  self?.downloadingDictionary[manifest] = nil
-                  self?.progressDictionary[manifest] = nil
-                  self?.publishersDictionary[manifest] = nil
-                  resultHandler(result, nil)
+                
+                ParseJSON(result) { [weak self] results in
+                  DispatchQueue.main.async {
+                    self?.requestsDictionary[manifest] = nil
+                    self?.downloadingDictionary[manifest] = nil
+                    self?.publishersDictionary[manifest] = nil
+                    self?.progressDictionary[manifest] = nil
+                    resultHandler(results, nil)
+                  }
                 }
               }
             }
           }
         }
       } else {
-        DispatchQueue.main.async {
-          resultHandler(result, nil)
+        ParseJSON(result) { results in
+          DispatchQueue.main.async {
+            resultHandler(results, nil)
+          }
         }
       }
     }
@@ -511,29 +576,26 @@ private extension NBARRuschaPickerDataModel {
 
 //  MARK: -
 
-private final class NBARRuschaPickerDataModelAnchorsRequest : ObservableObject {
+private final class NBARRuschaPickerDataModelJSONRequest : ObservableObject {
   //  MARK: -
   private let manifest: String
   
   @Published var progress = 0.0
   
   private var array = Array<URLSessionDataTask>()
-  private var backgroundTask = UIBackgroundTaskIdentifier.invalid
+  private var backgroundTask: UIBackgroundTaskIdentifier?
   private var didCancel = false
   private var didRequest = false
   
   private let queue: DispatchQueue
+  
   //  MARK: -
+  
   init(_ manifest: String) {
     self.manifest = manifest
     self.queue = DispatchQueue(label: manifest)
   }
-}
-
-//  MARK: -
-
-private extension NBARRuschaPickerDataModelAnchorsRequest {
-  //  MARK: -
+  
   func cancel() {
     self.queue.async {
       if self.didRequest {
@@ -555,7 +617,7 @@ private extension NBARRuschaPickerDataModelAnchorsRequest {
         //  motivation=https://data.getty.edu/local/thesaurus/motivations/iiif_ap_manifest_of
         //  target_generator=https://data.getty.edu/local/thesaurus/generators/arches
         let string = "https://services.getty.edu/id-management/links/page/1?body_id=https://media.getty.edu/iiif/manifest/" + self.manifest
-        let task = JSONTask(for: string) { [weak self] result, response, error in
+        let task = URLSession.shared.jsonTask(with: string) { [weak self] result, response, error in
           if let error = error {
             if let response = response {
               print(response)
@@ -578,7 +640,7 @@ private extension NBARRuschaPickerDataModelAnchorsRequest {
                   var next: String? = "https://services.getty.edu/id-management/links/page/1?target_id=" + target
                   while let string = next {
                     //  TODO: CHECK CANCEL BOOL ON EVERY ITERATION
-                    let task = JSONTask(for: string) { result, response, error in
+                    let task = URLSession.shared.jsonTask(with: string) { result, response, error in
                       if let error = error {
                         if let response = response {
                           print(response)
@@ -598,6 +660,7 @@ private extension NBARRuschaPickerDataModelAnchorsRequest {
                     }
                     
                     if let task = task {
+                      task.resume()
                       self?.array.append(task)
                       semaphore.wait()
                     }
@@ -609,7 +672,7 @@ private extension NBARRuschaPickerDataModelAnchorsRequest {
                       
                       for bodyID in bodyIDs {
                         //  TODO: CHECK CANCEL BOOL ON EVERY ITERATION
-                        let task = JSONTask(for: bodyID) { [weak self] result, response, error in
+                        let task = URLSession.shared.jsonTask(with: bodyID) { [weak self] result, response, error in
                           if let error = error {
                             if let response = response {
                               print(response)
@@ -685,6 +748,7 @@ private extension NBARRuschaPickerDataModelAnchorsRequest {
                         }
                         
                         if let task = task {
+                          task.resume()
                           self?.array.append(task)
                           count += 1
                           if count == URLSession.shared.configuration.httpMaximumConnectionsPerHost {
@@ -713,6 +777,7 @@ private extension NBARRuschaPickerDataModelAnchorsRequest {
         }
         
         if let task = task {
+          task.resume()
           self.array.append(task)
         }
       }
@@ -722,7 +787,7 @@ private extension NBARRuschaPickerDataModelAnchorsRequest {
 
 //  MARK: -
 
-private extension NBARRuschaPickerDataModelAnchorsRequest {
+private extension NBARRuschaPickerDataModelJSONRequest {
   //  MARK: -
   private func beginBackgroundTask() {
     self.backgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
@@ -733,7 +798,9 @@ private extension NBARRuschaPickerDataModelAnchorsRequest {
   }
   
   private func endBackgroundTask() {
-    UIApplication.shared.endBackgroundTask(self.backgroundTask)
+    if let backgroundTask = self.backgroundTask {
+      UIApplication.shared.endBackgroundTask(backgroundTask)
+    }
   }
 }
 

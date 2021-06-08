@@ -11,64 +11,33 @@
 //  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-import CoreLocation
-import Foundation
 import NBARKit
 import UIKit
 
-//  MARK: -
-
-private struct NBARRuschaDataModelAnchor : NBARPhotosAnchor {
-  //  MARK: -
-  let id: UUID
-  let altitude: CLLocationDistance?
-  let coordinate: CLLocationCoordinate2D
-  let course: CLLocationDirection
-  let image: String
-  let pixelHeight: Int?
-  let pixelWidth: Int?
+extension NBARRuschaPickerResult : NBARPhotosAnchor {
+  
 }
 
 //  MARK: -
 
 final class NBARRuschaDataModel : ObservableObject {
   //  MARK: -
-  @Published private var anchorsDictionary = Dictionary<UUID, NBARRuschaDataModelAnchor>()
   private var requestsDictionary = Dictionary<UUID, NBARRuschaDataModelImageRequest>()
+  @Published private var resultsDictionary = Dictionary<UUID, NBARRuschaPickerResult>()
   
   private let queue = DispatchQueue(label: "")
-}
-
-//  MARK: -
-
-extension NBARRuschaDataModel {
-  func parseResults(_ results: Any) {
-    self.queue.async { [weak self] in
-      if let array = (results as? Array<Dictionary<String, Any>>),
-         array.count != 0 {
-        var anchorsDictionary = Dictionary<UUID, NBARRuschaDataModelAnchor>()
-        for dictionary in array {
-          if let bearing = dictionary["bearing"] as? Double,
-             let image = dictionary["manifest_id"] as? String,
-             let latitude = dictionary["latitude"] as? Double,
-             let longitude = dictionary["longitude"] as? Double {
-            let coordinate = CLLocationCoordinate2DMake(latitude, longitude)
-            if CLLocationCoordinate2DIsValid(coordinate) {
-              var course = (bearing - 90.0)
-              if course < 0.0 {
-                course += 360.0
-              }
-              if 359.9 < course {
-                course = 359.9
-              }
-              let id = UUID()
-              anchorsDictionary[id] = NBARRuschaDataModelAnchor(id: id, altitude: nil, coordinate: coordinate, course: course, image: image, pixelHeight: nil, pixelWidth: nil)
-            }
-          }
+  
+  //  MARK: -
+  
+  func parseResults(_ results: Array<NBARRuschaPickerResult>) {
+    self.queue.async {
+      if results.count != 0 {
+        var resultsDictionary = Dictionary<UUID, NBARRuschaPickerResult>()
+        for result in results {
+          resultsDictionary[result.id] = result
         }
-        
-        DispatchQueue.main.async { [weak self] in
-          self?.anchorsDictionary = anchorsDictionary
+        DispatchQueue.main.async {
+          self.resultsDictionary = resultsDictionary
         }
       }
     }
@@ -80,20 +49,20 @@ extension NBARRuschaDataModel {
 extension NBARRuschaDataModel : NBARPhotosViewDataModel {
   //  MARK: -
   var anchors: Array<NBARPhotosAnchor> {
-    return Array(self.anchorsDictionary.values)
+    return Array(self.resultsDictionary.values)
   }
   
   //  MARK: -
   
   func cancelImageRequest(for id: UUID) {
     if let request = self.requestsDictionary[id] {
-      request.cancel()
       self.requestsDictionary[id] = nil
+      request.cancel()
     }
   }
   
   func placeholder(for anchor: NBARPhotosAnchor) -> UIImage? {
-    if let image = self.anchorsDictionary[anchor.id]?.image,
+    if let image = self.resultsDictionary[anchor.id]?.image,
        let url = URL(string: image) {
       let request = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad)
       if URLCache.shared.cachedResponse(for: request) != nil {
@@ -105,7 +74,7 @@ extension NBARRuschaDataModel : NBARPhotosViewDataModel {
   
   func requestImage(for anchor: NBARPhotosAnchor, resultHandler: @escaping (UIImage?, Dictionary<AnyHashable, Any>?) -> Void) -> UUID? {
     if self.requestsDictionary[anchor.id] == nil,
-       let image = self.anchorsDictionary[anchor.id]?.image {
+       let image = self.resultsDictionary[anchor.id]?.image {
       let request = NBARRuschaDataModelImageRequest(image)
       request.request { [weak self] result, error in
         DispatchQueue.main.async {
@@ -127,7 +96,7 @@ private final class NBARRuschaDataModelImageRequest {
   private let image: String
   
   private var array = Array<URLSessionDataTask>()
-  private var backgroundTask = UIBackgroundTaskIdentifier.invalid
+  private var backgroundTask: UIBackgroundTaskIdentifier?
   private var didCancel = false
   private var didRequest = false
   
@@ -139,12 +108,7 @@ private final class NBARRuschaDataModelImageRequest {
     self.image = image
     self.queue = DispatchQueue(label: image)
   }
-}
-
-//  MARK: -
-
-private extension NBARRuschaDataModelImageRequest {
-  //  MARK: -
+  
   func cancel() {
     self.queue.async {
       if self.didRequest {
@@ -160,7 +124,7 @@ private extension NBARRuschaDataModelImageRequest {
     self.queue.async {
       if self.didRequest == false {
         self.didRequest = true
-        let task = JSONTask(for: self.image) { [weak self] result, response, error in
+        let task = URLSession.shared.jsonTask(with: self.image) { [weak self] result, response, error in
           if let error = error {
             if let response = response {
               print(response)
@@ -179,7 +143,7 @@ private extension NBARRuschaDataModelImageRequest {
               let resource = resource.replacingOccurrences(of: "/full/full/0", with: "/full/1080,/0")
               self.queue.async {
                 if self.didCancel == false {
-                  let task = ImageTask(for: resource) { result, response, error in
+                  let task = URLSession.shared.imageTask(with: resource) { result, response, error in
                     if let error = error {
                       if let response = response {
                         print(response)
@@ -192,6 +156,7 @@ private extension NBARRuschaDataModelImageRequest {
                   }
                   
                   if let task = task {
+                    task.resume()
                     self.array.append(task)
                   } else {
                     resultHandler(nil, nil)
@@ -205,6 +170,7 @@ private extension NBARRuschaDataModelImageRequest {
         }
         
         if let task = task {
+          task.resume()
           self.array.append(task)
         }
       }
@@ -225,6 +191,8 @@ private extension NBARRuschaDataModelImageRequest {
   }
   
   private func endBackgroundTask() {
-    UIApplication.shared.endBackgroundTask(self.backgroundTask)
+    if let backgroundTask = self.backgroundTask {
+      UIApplication.shared.endBackgroundTask(backgroundTask)
+    }
   }
 }
