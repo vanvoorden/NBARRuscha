@@ -14,12 +14,6 @@
 import NBARKit
 import SwiftUI
 
-extension Bundle {
-  var navigationTitle: String {
-    return ((self.infoDictionary?["CFBundleDisplayName"] as? String ?? "") + " " + (self.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""))
-  }
-}
-
 @main
 struct NBARRuschaApp : App {
   //  MARK: -
@@ -31,6 +25,14 @@ struct NBARRuschaApp : App {
         model: self.model
       )
     }
+  }
+}
+
+//  MARK: -
+
+extension Bundle {
+  var navigationTitle: String {
+    return ((self.infoDictionary?["CFBundleDisplayName"] as? String ?? "") + " " + (self.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""))
   }
 }
 
