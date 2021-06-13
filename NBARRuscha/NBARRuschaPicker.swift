@@ -232,13 +232,17 @@ private struct NBARRuschaPickerAboutRow : View {
   private let text: String
   
   var body: some View {
-    ZStack(alignment: .leading) {
+    ZStack(
+      alignment: .leading
+    ) {
       Color(.systemBackground)
       HStack {
         Text(self.text)
         Spacer()
         Image(systemName: "safari")
-      }
+      }.foregroundColor(
+        .accentColor
+      )
     }.padding(
       .vertical,
       8.0
