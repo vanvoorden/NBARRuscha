@@ -14,6 +14,12 @@
 import NBARKit
 import SwiftUI
 
+extension Bundle {
+  var navigationTitle: String {
+    return ((self.infoDictionary?["CFBundleDisplayName"] as? String ?? "") + " " + (self.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""))
+  }
+}
+
 @main
 struct NBARRuschaApp : App {
   //  MARK: -
@@ -70,7 +76,7 @@ struct NBARRuschaContentView : View {
         if self.model.anchors.count == 0 {
           NBARRuschaLaunchView(
           ).navigationTitle(
-            "Ruscha AR 0.2"
+            Bundle.main.navigationTitle
           ).onTapGesture {
             self.isSheetPresented.toggle()
           }

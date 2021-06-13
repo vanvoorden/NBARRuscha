@@ -387,7 +387,7 @@ struct NBARRuschaPicker : View {
         }
       }.environment(\.editMode, .constant(.active)
       ).navigationTitle(
-        "Ruscha AR 0.2"
+        Bundle.main.navigationTitle
       ).sheet(
         isPresented: self.$isSheetPresented
       ) {
