@@ -145,7 +145,7 @@ struct NBARRuschaContentView : View {
             }
           ) {
             Label(
-              "Camera",
+              "Photo",
               systemImage: "photo"
             )
           }
