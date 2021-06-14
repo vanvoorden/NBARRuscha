@@ -18,16 +18,11 @@ extension NBARRuschaPickerResult : NBARPhotosAnchor {
   
 }
 
-//  MARK: -
-
 final class NBARRuschaDataModel : ObservableObject {
-  //  MARK: -
   private var requestsDictionary = Dictionary<UUID, NBARRuschaDataModelImageRequest>()
   @Published private var resultsDictionary = Dictionary<UUID, NBARRuschaPickerResult>()
   
   private let queue = DispatchQueue(label: "")
-  
-  //  MARK: -
   
   func parseResults(_ results: Array<NBARRuschaPickerResult>) {
     self.queue.async {
@@ -44,15 +39,10 @@ final class NBARRuschaDataModel : ObservableObject {
   }
 }
 
-//  MARK: -
-
 extension NBARRuschaDataModel : NBARPhotosViewDataModel {
-  //  MARK: -
   var anchors: Array<NBARPhotosAnchor> {
     return Array(self.resultsDictionary.values)
   }
-  
-  //  MARK: -
   
   func cancelImageRequest(for id: UUID) {
     if let request = self.requestsDictionary[id] {
@@ -89,10 +79,7 @@ extension NBARRuschaDataModel : NBARPhotosViewDataModel {
   }
 }
 
-//  MARK: -
-
 private final class NBARRuschaDataModelImageRequest {
-  //  MARK: -
   private let image: String
   
   private var array = Array<URLSessionDataTask>()
@@ -101,8 +88,6 @@ private final class NBARRuschaDataModelImageRequest {
   private var didRequest = false
   
   private let queue: DispatchQueue
-  
-  //  MARK: -
   
   init(_ image: String) {
     self.image = image
@@ -178,10 +163,7 @@ private final class NBARRuschaDataModelImageRequest {
   }
 }
 
-//  MARK: -
-
 private extension NBARRuschaDataModelImageRequest {
-  //  MARK: -
   private func beginBackgroundTask() {
     self.backgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
       if let backgroundTask = self?.backgroundTask {

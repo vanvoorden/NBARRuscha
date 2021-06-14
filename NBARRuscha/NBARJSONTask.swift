@@ -14,7 +14,6 @@
 import Foundation
 
 extension URLSession {
-  //  MARK: -
   func jsonTask(with request: URLRequest, completionHandler: @escaping (Any?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
     let task = self.dataTask(with: request) { result, response, error in
       if let error = error {

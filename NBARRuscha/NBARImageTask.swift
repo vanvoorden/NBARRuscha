@@ -15,7 +15,6 @@ import Foundation
 import UIKit
 
 extension URLSession {
-  //  MARK: -
   func imageTask(with request: URLRequest, completionHandler: @escaping (UIImage?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
     let task = self.dataTask(with: request) { result, response, error in
       if let error = error {

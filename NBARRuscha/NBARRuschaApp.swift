@@ -16,7 +16,6 @@ import SwiftUI
 
 @main
 struct NBARRuschaApp : App {
-  //  MARK: -
   @StateObject private var model = NBARRuschaDataModel()
   
   var body: some Scene {
@@ -28,18 +27,13 @@ struct NBARRuschaApp : App {
   }
 }
 
-//  MARK: -
-
 extension Bundle {
   var navigationTitle: String {
     return ((self.infoDictionary?["CFBundleDisplayName"] as? String ?? "") + " " + (self.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""))
   }
 }
 
-//  MARK: -
-
 private struct NBARRuschaLaunchView : View {
-  //  MARK: -
   var body: some View {
     ScrollView {
       HStack {
@@ -63,7 +57,6 @@ private struct NBARRuschaLaunchView : View {
 }
 
 struct NBARRuschaContentView : View {
-  //  MARK: -
   @ObservedObject private var model: NBARRuschaDataModel
   
   @State private var isEditing = true
@@ -156,17 +149,12 @@ struct NBARRuschaContentView : View {
     )
   }
   
-  //  MARK: -
-  
   init(model: NBARRuschaDataModel) {
     self.model = model
   }
 }
 
-// MARK: -
-
-struct NBARRuschaContentViewPreviews: PreviewProvider {
-  // MARK: -
+struct NBARRuschaContentViewPreviews : PreviewProvider {
   static var previews: some View {
     NBARRuschaContentView(
       model: NBARRuschaDataModel()

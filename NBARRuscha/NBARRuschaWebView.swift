@@ -15,10 +15,7 @@ import SafariServices
 import SwiftUI
 
 struct NBARRuschaWebView : UIViewControllerRepresentable {
-  //  MARK: -
   private let url: URL
-  
-  //  MARK: -
   
   init(url: URL) {
     self.url = url

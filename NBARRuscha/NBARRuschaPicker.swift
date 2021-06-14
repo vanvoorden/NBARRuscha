@@ -156,25 +156,18 @@ private let NBARRuschaPickerArray = [
 private let NBARRuschaPickerDictionary = ["ea08b3ad-916c-431b-8d0e-6bd3abf1b484": ["title": "Sunset Blvd 1976", "subtitle": "1,787 digitized items"], "07b69de7-f404-4402-ac5a-3ca805ab366a": ["title": "Sunset Blvd 2007", "subtitle": "7,893 digitized items"], "cb948d98-91c6-4f07-bb9d-72ea9c10279d": ["subtitle": "1,029 digitized items", "title": "Sunset Blvd 1966"], "b4a4882d-9f8d-4359-9234-6b236b2340e3": ["subtitle": "7,271 digitized items", "title": "Sunset Blvd 1973"], "10c19903-e59a-461e-a5d9-35dc21206521": ["subtitle": "3,838 digitized items", "title": "Hollywood Blvd 2010"], "3944f7e5-c0a1-42ea-b8c4-8c0626daca16": ["title": "Melrose Ave 1975", "subtitle": "3,725 digitized items"], "616681dd-ee9e-4ad3-b634-54b7f0ec09a2": ["subtitle": "7,692 digitized items", "title": "Sunset Blvd 1995"], "a93883f1-ae71-491b-a795-7f7d436c217a": ["title": "Hollywood Blvd 1973", "subtitle": "4,293 digitized items"], "9a717363-ade5-4cc8-8c7e-eb34a5871b15": ["subtitle": "7,643 digitized items", "title": "Hollywood Blvd 2010"], "d4583048-9fa7-4622-9cad-25b610c940ee": ["title": "Sunset Blvd 1985", "subtitle": "6,317 digitized items"], "94721c03-d8fd-4c90-8155-07e99abaee58": ["title": "Melrose Ave 2007", "subtitle": "2,272 digitized items"], "7846f644-f7a7-4189-895d-bc020d5d26d3": ["subtitle": "4,558 digitized items", "title": "Santa Monica Blvd 2007"], "997413b5-3550-4feb-b7ac-24499bb8182f": ["subtitle": "4,321 digitized items", "title": "Sunset Blvd 1998"], "1e66719b-9283-4fe5-9e2f-b15fa34e930d": ["title": "Melrose Ave 2007", "subtitle": "2,600 digitized items"], "25924e1e-be29-4c9f-9192-3cb0fd11ab26": ["subtitle": "7,643 digitized items", "title": "Sunset Blvd 2007"], "64ec82f4-d641-4ee7-9b44-449e402f782c": ["title": "Sunset Blvd 1965", "subtitle": "788 digitized items"], "085c6ebc-fce9-40d8-88e3-c9e0626b11ce": ["title": "Santa Monica Blvd 1974", "subtitle": "4,959 digitized items"], "ccb54cf9-9e19-4f2f-9a57-cdc41e2145d3": ["title": "Sunset Blvd 1990", "subtitle": "6,023 digitized items"], "ae3bc7ed-5cf3-405f-9de9-7f4224513b99": ["subtitle": "6,540 digitized items", "title": "Sunset Blvd 1966"], "83b90c40-d00f-4cc3-9a80-0fcf5f6665d4": ["subtitle": "8,221 digitized items", "title": "Sunset Blvd 1997"], "f1b1fff9-310f-4afc-b157-5d3d6a22a6a6": ["title": "Sunset Blvd 1974", "subtitle": "8,218 digitized items"], "e72ea5a5-241a-4ae0-a290-551755b87fae": ["subtitle": "4,525 digitized items", "title": "Santa Monica Blvd 2007"]]
 
 private struct NBARRuschaPickerRowDataModel : Identifiable {
-  //  MARK: -
   let title: String
   let subtitle: String
   let id: String
 }
 
-//  MARK: -
-
 private struct NBARRuschaPickerSectionDataModel : Identifiable {
-  //  MARK: -
   let title: String
   let id: UUID
   let rows: Array<NBARRuschaPickerRowDataModel>
 }
 
-//  MARK: -
-
 private struct NBARRuschaPickerRow : View {
-  //  MARK: -
   private let model: NBARRuschaPickerRowDataModel
   
   private var downloading: Bool
@@ -216,8 +209,6 @@ private struct NBARRuschaPickerRow : View {
     )
   }
   
-  //  MARK: -
-  
   init(model: NBARRuschaPickerRowDataModel, downloading: Bool, progress: Double) {
     self.model = model
     self.downloading = downloading
@@ -225,10 +216,7 @@ private struct NBARRuschaPickerRow : View {
   }
 }
 
-//  MARK: -
-
 private struct NBARRuschaPickerAboutRow : View {
-  //  MARK: -
   private let text: String
   
   var body: some View {
@@ -249,17 +237,12 @@ private struct NBARRuschaPickerAboutRow : View {
     )
   }
   
-  //  MARK: -
-  
   init(text: String) {
     self.text = text
   }
 }
 
-//  MARK: -
-
 private struct NBARRuschaPickerAboutSheet : View {
-  //  MARK: -
   @Binding private var url: URL?
   @Binding private var isSheetPresented: Bool
   
@@ -275,18 +258,13 @@ private struct NBARRuschaPickerAboutSheet : View {
     }
   }
   
-  //  MARK: -
-  
   init(url: Binding<URL?>, isSheetPresented: Binding<Bool>) {
     self._url = url
     self._isSheetPresented = isSheetPresented
   }
 }
 
-//  MARK: -
-
 private struct NBARRuschaPickerThanksRow : View {
-  //  MARK: -
   private let text: String
   
   var body: some View {
@@ -300,17 +278,12 @@ private struct NBARRuschaPickerThanksRow : View {
     )
   }
   
-  //  MARK: -
-  
   init(text: String) {
     self.text = text
   }
 }
 
-//  MARK: -
-
 struct NBARRuschaPickerResult {
-  //  MARK: -
   let id: UUID
   let altitude: CLLocationDistance?
   let coordinate: CLLocationCoordinate2D
@@ -320,10 +293,7 @@ struct NBARRuschaPickerResult {
   let pixelWidth: Int?
 }
 
-//  MARK: -
-
 struct NBARRuschaPicker : View {
-  //  MARK: -
   private let didFinishPicking: (String?, Array<NBARRuschaPickerResult>) -> Void
   
   @StateObject private var model = NBARRuschaPickerDataModel.shared
@@ -442,14 +412,10 @@ struct NBARRuschaPicker : View {
     }
   }
   
-  //  MARK: -
-  
   init(didFinishPicking: @escaping (String?, Array<NBARRuschaPickerResult>) -> Void) {
     self.didFinishPicking = didFinishPicking
   }
 }
-
-//  MARK: -
 
 private func ParseJSON(_ json: Any?, completionHandler: @escaping (Array<NBARRuschaPickerResult>) -> Void) {
   DispatchQueue.global().async {
@@ -511,10 +477,7 @@ private func WriteLocalJSON(_ name: String, json: Any, completionHandler: @escap
   }
 }
 
-//  MARK: -
-
 private final class NBARRuschaPickerDataModel : ObservableObject {
-  //  MARK: -
   static let shared = NBARRuschaPickerDataModel()
   
   @Published var downloadingDictionary = Dictionary<String, Bool>()
@@ -522,8 +485,6 @@ private final class NBARRuschaPickerDataModel : ObservableObject {
   
   private var publishersDictionary = Dictionary<String, AnyCancellable>()
   private var requestsDictionary = Dictionary<String, NBARRuschaPickerDataModelJSONRequest>()
-  
-  //  MARK: -
   
   func request(for manifest: String, resultHandler: @escaping (Array<NBARRuschaPickerResult>, Dictionary<AnyHashable, Any>?) -> Void) {
     ReadLocalJSON(manifest) { [weak self] result, error in
@@ -578,10 +539,7 @@ private final class NBARRuschaPickerDataModel : ObservableObject {
   }
 }
 
-//  MARK: -
-
 private final class NBARRuschaPickerDataModelJSONRequest : ObservableObject {
-  //  MARK: -
   private let manifest: String
   
   @Published var progress = 0.0
@@ -592,8 +550,6 @@ private final class NBARRuschaPickerDataModelJSONRequest : ObservableObject {
   private var didRequest = false
   
   private let queue: DispatchQueue
-  
-  //  MARK: -
   
   init(_ manifest: String) {
     self.manifest = manifest
@@ -789,10 +745,7 @@ private final class NBARRuschaPickerDataModelJSONRequest : ObservableObject {
   }
 }
 
-//  MARK: -
-
 private extension NBARRuschaPickerDataModelJSONRequest {
-  //  MARK: -
   private func beginBackgroundTask() {
     self.backgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
       if let backgroundTask = self?.backgroundTask {
@@ -808,10 +761,7 @@ private extension NBARRuschaPickerDataModelJSONRequest {
   }
 }
 
-// MARK: -
-
-struct NBARRuschaPickerPreviews: PreviewProvider {
-  // MARK: -
+struct NBARRuschaPickerPreviews : PreviewProvider {
   static var previews: some View {
     NBARRuschaPicker(
       didFinishPicking: { title, manifest in
