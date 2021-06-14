@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		AE3C514326684B3A0043E3D1 /* NBARRuschaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C514226684B3A0043E3D1 /* NBARRuschaApp.swift */; };
-		AE3C515526684B3B0043E3D1 /* NBARRuschaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C515426684B3B0043E3D1 /* NBARRuschaTests.swift */; };
-		AE3C516026684B3B0043E3D1 /* NBARRuschaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C515F26684B3B0043E3D1 /* NBARRuschaUITests.swift */; };
 		AE3C517826684BF40043E3D1 /* NBARRuschaWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C516F26684BF30043E3D1 /* NBARRuschaWebView.swift */; };
 		AE3C517B26684BF40043E3D1 /* NBARJSONTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C517226684BF30043E3D1 /* NBARJSONTask.swift */; };
 		AE3C517C26684BF40043E3D1 /* NBARImageTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C517326684BF40043E3D1 /* NBARImageTask.swift */; };
@@ -19,17 +17,36 @@
 		AE3C518026684BF40043E3D1 /* NBARRuschaDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C517726684BF40043E3D1 /* NBARRuschaDataModel.swift */; };
 		AE513D3E2668A82E00ADB6E6 /* NBARKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE513D3C2668A82200ADB6E6 /* NBARKit.xcframework */; };
 		AE513D3F2668A82E00ADB6E6 /* NBARKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE513D3C2668A82200ADB6E6 /* NBARKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AE82B00C2676D27B00F9FE82 /* NBARNetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82B0022676D27B00F9FE82 /* NBARNetworkSession.swift */; };
+		AE82B00D2676D27B00F9FE82 /* NBARNetworkImageSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82B0032676D27B00F9FE82 /* NBARNetworkImageSerialization.swift */; };
+		AE82B00E2676D27B00F9FE82 /* NBARNetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82B0042676D27B00F9FE82 /* NBARNetworkResponse.swift */; };
+		AE82B00F2676D27B00F9FE82 /* NBARNetworkDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82B0052676D27B00F9FE82 /* NBARNetworkDataTask.swift */; };
+		AE82B0112676D27B00F9FE82 /* NBARNetworkJSONOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82B0072676D27B00F9FE82 /* NBARNetworkJSONOperation.swift */; };
+		AE82B0122676D27B00F9FE82 /* NBARNetworkJSONHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82B0082676D27B00F9FE82 /* NBARNetworkJSONHandler.swift */; };
+		AE82B0132676D27B00F9FE82 /* NBARNetworkImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82B0092676D27B00F9FE82 /* NBARNetworkImageOperation.swift */; };
+		AE82B0142676D27B00F9FE82 /* NBARNetworkDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82B00A2676D27B00F9FE82 /* NBARNetworkDataHandler.swift */; };
+		AE82B0152676D27B00F9FE82 /* NBARNetworkImageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82B00B2676D27B00F9FE82 /* NBARNetworkImageHandler.swift */; };
+		AE82B0202676D2A100F9FE82 /* NBARNetworkJSONOperationTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82B0172676D2A100F9FE82 /* NBARNetworkJSONOperationTestCase.swift */; };
+		AE82B0212676D2A100F9FE82 /* NBARNetworkImageHandlerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82B0182676D2A100F9FE82 /* NBARNetworkImageHandlerTestCase.swift */; };
+		AE82B0222676D2A100F9FE82 /* NBARNetworkImageSerializationTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82B0192676D2A100F9FE82 /* NBARNetworkImageSerializationTestCase.swift */; };
+		AE82B0232676D2A100F9FE82 /* NBARNetworkDataTaskTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82B01A2676D2A100F9FE82 /* NBARNetworkDataTaskTestCase.swift */; };
+		AE82B0242676D2A100F9FE82 /* NBARNetworkDataHandlerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82B01B2676D2A100F9FE82 /* NBARNetworkDataHandlerTestCase.swift */; };
+		AE82B0252676D2A100F9FE82 /* NBARNetworkSessionTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82B01C2676D2A100F9FE82 /* NBARNetworkSessionTestCase.swift */; };
+		AE82B0272676D2A100F9FE82 /* NBARNetworkJSONHandlerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82B01E2676D2A100F9FE82 /* NBARNetworkJSONHandlerTestCase.swift */; };
+		AE82B0282676D2A100F9FE82 /* NBARNetworkImageOperationTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82B01F2676D2A100F9FE82 /* NBARNetworkImageOperationTestCase.swift */; };
+		AE82B0292676D30300F9FE82 /* NBARNetworkJSONHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82B0082676D27B00F9FE82 /* NBARNetworkJSONHandler.swift */; };
+		AE82B02A2676D30300F9FE82 /* NBARNetworkImageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82B00B2676D27B00F9FE82 /* NBARNetworkImageHandler.swift */; };
+		AE82B02B2676D30300F9FE82 /* NBARNetworkImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82B0092676D27B00F9FE82 /* NBARNetworkImageOperation.swift */; };
+		AE82B02C2676D30300F9FE82 /* NBARNetworkJSONOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82B0072676D27B00F9FE82 /* NBARNetworkJSONOperation.swift */; };
+		AE82B02D2676D30300F9FE82 /* NBARNetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82B0042676D27B00F9FE82 /* NBARNetworkResponse.swift */; };
+		AE82B02E2676D30300F9FE82 /* NBARNetworkImageSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82B0032676D27B00F9FE82 /* NBARNetworkImageSerialization.swift */; };
+		AE82B02F2676D30300F9FE82 /* NBARNetworkDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82B0052676D27B00F9FE82 /* NBARNetworkDataTask.swift */; };
+		AE82B0302676D30300F9FE82 /* NBARNetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82B0022676D27B00F9FE82 /* NBARNetworkSession.swift */; };
+		AE82B0312676D30300F9FE82 /* NBARNetworkDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82B00A2676D27B00F9FE82 /* NBARNetworkDataHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		AE3C515126684B3B0043E3D1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AE3C513726684B3A0043E3D1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AE3C513E26684B3A0043E3D1;
-			remoteInfo = NBARRuscha;
-		};
-		AE3C515C26684B3B0043E3D1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AE3C513726684B3A0043E3D1 /* Project object */;
 			proxyType = 1;
@@ -61,11 +78,7 @@
 		AE3C514226684B3A0043E3D1 /* NBARRuschaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBARRuschaApp.swift; sourceTree = "<group>"; };
 		AE3C514B26684B3B0043E3D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE3C515026684B3B0043E3D1 /* NBARRuschaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NBARRuschaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AE3C515426684B3B0043E3D1 /* NBARRuschaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBARRuschaTests.swift; sourceTree = "<group>"; };
 		AE3C515626684B3B0043E3D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AE3C515B26684B3B0043E3D1 /* NBARRuschaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NBARRuschaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AE3C515F26684B3B0043E3D1 /* NBARRuschaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBARRuschaUITests.swift; sourceTree = "<group>"; };
-		AE3C516126684B3B0043E3D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE3C516F26684BF30043E3D1 /* NBARRuschaWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARRuschaWebView.swift; sourceTree = "<group>"; };
 		AE3C517226684BF30043E3D1 /* NBARJSONTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARJSONTask.swift; sourceTree = "<group>"; };
 		AE3C517326684BF40043E3D1 /* NBARImageTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARImageTask.swift; sourceTree = "<group>"; };
@@ -74,6 +87,23 @@
 		AE3C517626684BF40043E3D1 /* Getty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Getty.png; sourceTree = "<group>"; };
 		AE3C517726684BF40043E3D1 /* NBARRuschaDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARRuschaDataModel.swift; sourceTree = "<group>"; };
 		AE513D3C2668A82200ADB6E6 /* NBARKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = NBARKit.xcframework; sourceTree = "<group>"; };
+		AE82B0022676D27B00F9FE82 /* NBARNetworkSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARNetworkSession.swift; sourceTree = "<group>"; };
+		AE82B0032676D27B00F9FE82 /* NBARNetworkImageSerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARNetworkImageSerialization.swift; sourceTree = "<group>"; };
+		AE82B0042676D27B00F9FE82 /* NBARNetworkResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARNetworkResponse.swift; sourceTree = "<group>"; };
+		AE82B0052676D27B00F9FE82 /* NBARNetworkDataTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARNetworkDataTask.swift; sourceTree = "<group>"; };
+		AE82B0072676D27B00F9FE82 /* NBARNetworkJSONOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARNetworkJSONOperation.swift; sourceTree = "<group>"; };
+		AE82B0082676D27B00F9FE82 /* NBARNetworkJSONHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARNetworkJSONHandler.swift; sourceTree = "<group>"; };
+		AE82B0092676D27B00F9FE82 /* NBARNetworkImageOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARNetworkImageOperation.swift; sourceTree = "<group>"; };
+		AE82B00A2676D27B00F9FE82 /* NBARNetworkDataHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARNetworkDataHandler.swift; sourceTree = "<group>"; };
+		AE82B00B2676D27B00F9FE82 /* NBARNetworkImageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARNetworkImageHandler.swift; sourceTree = "<group>"; };
+		AE82B0172676D2A100F9FE82 /* NBARNetworkJSONOperationTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARNetworkJSONOperationTestCase.swift; sourceTree = "<group>"; };
+		AE82B0182676D2A100F9FE82 /* NBARNetworkImageHandlerTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARNetworkImageHandlerTestCase.swift; sourceTree = "<group>"; };
+		AE82B0192676D2A100F9FE82 /* NBARNetworkImageSerializationTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARNetworkImageSerializationTestCase.swift; sourceTree = "<group>"; };
+		AE82B01A2676D2A100F9FE82 /* NBARNetworkDataTaskTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARNetworkDataTaskTestCase.swift; sourceTree = "<group>"; };
+		AE82B01B2676D2A100F9FE82 /* NBARNetworkDataHandlerTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARNetworkDataHandlerTestCase.swift; sourceTree = "<group>"; };
+		AE82B01C2676D2A100F9FE82 /* NBARNetworkSessionTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARNetworkSessionTestCase.swift; sourceTree = "<group>"; };
+		AE82B01E2676D2A100F9FE82 /* NBARNetworkJSONHandlerTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARNetworkJSONHandlerTestCase.swift; sourceTree = "<group>"; };
+		AE82B01F2676D2A100F9FE82 /* NBARNetworkImageOperationTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARNetworkImageOperationTestCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,13 +116,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		AE3C514D26684B3B0043E3D1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AE3C515826684B3B0043E3D1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -125,9 +148,10 @@
 			children = (
 				AE1E1BD62668709100CBA366 /* Frameworks */,
 				AE065FEA2668C20B0096C79C /* LICENSE */,
+				AE82B0012676D27B00F9FE82 /* NBARNetworking */,
+				AE82B0162676D2A100F9FE82 /* NBARNetworkingTests */,
 				AE3C514126684B3A0043E3D1 /* NBARRuscha */,
 				AE3C515326684B3B0043E3D1 /* NBARRuschaTests */,
-				AE3C515E26684B3B0043E3D1 /* NBARRuschaUITests */,
 				AE3C514026684B3A0043E3D1 /* Products */,
 				AE065FED2668C2130096C79C /* README.md */,
 			);
@@ -138,7 +162,6 @@
 			children = (
 				AE3C513F26684B3A0043E3D1 /* NBARRuscha.app */,
 				AE3C515026684B3B0043E3D1 /* NBARRuschaTests.xctest */,
-				AE3C515B26684B3B0043E3D1 /* NBARRuschaUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -162,19 +185,40 @@
 		AE3C515326684B3B0043E3D1 /* NBARRuschaTests */ = {
 			isa = PBXGroup;
 			children = (
-				AE3C515426684B3B0043E3D1 /* NBARRuschaTests.swift */,
 				AE3C515626684B3B0043E3D1 /* Info.plist */,
 			);
 			path = NBARRuschaTests;
 			sourceTree = "<group>";
 		};
-		AE3C515E26684B3B0043E3D1 /* NBARRuschaUITests */ = {
+		AE82B0012676D27B00F9FE82 /* NBARNetworking */ = {
 			isa = PBXGroup;
 			children = (
-				AE3C515F26684B3B0043E3D1 /* NBARRuschaUITests.swift */,
-				AE3C516126684B3B0043E3D1 /* Info.plist */,
+				AE82B0022676D27B00F9FE82 /* NBARNetworkSession.swift */,
+				AE82B0032676D27B00F9FE82 /* NBARNetworkImageSerialization.swift */,
+				AE82B0042676D27B00F9FE82 /* NBARNetworkResponse.swift */,
+				AE82B0052676D27B00F9FE82 /* NBARNetworkDataTask.swift */,
+				AE82B0072676D27B00F9FE82 /* NBARNetworkJSONOperation.swift */,
+				AE82B0082676D27B00F9FE82 /* NBARNetworkJSONHandler.swift */,
+				AE82B0092676D27B00F9FE82 /* NBARNetworkImageOperation.swift */,
+				AE82B00A2676D27B00F9FE82 /* NBARNetworkDataHandler.swift */,
+				AE82B00B2676D27B00F9FE82 /* NBARNetworkImageHandler.swift */,
 			);
-			path = NBARRuschaUITests;
+			path = NBARNetworking;
+			sourceTree = "<group>";
+		};
+		AE82B0162676D2A100F9FE82 /* NBARNetworkingTests */ = {
+			isa = PBXGroup;
+			children = (
+				AE82B0172676D2A100F9FE82 /* NBARNetworkJSONOperationTestCase.swift */,
+				AE82B0182676D2A100F9FE82 /* NBARNetworkImageHandlerTestCase.swift */,
+				AE82B0192676D2A100F9FE82 /* NBARNetworkImageSerializationTestCase.swift */,
+				AE82B01A2676D2A100F9FE82 /* NBARNetworkDataTaskTestCase.swift */,
+				AE82B01B2676D2A100F9FE82 /* NBARNetworkDataHandlerTestCase.swift */,
+				AE82B01C2676D2A100F9FE82 /* NBARNetworkSessionTestCase.swift */,
+				AE82B01E2676D2A100F9FE82 /* NBARNetworkJSONHandlerTestCase.swift */,
+				AE82B01F2676D2A100F9FE82 /* NBARNetworkImageOperationTestCase.swift */,
+			);
+			path = NBARNetworkingTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,24 +260,6 @@
 			productReference = AE3C515026684B3B0043E3D1 /* NBARRuschaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		AE3C515A26684B3B0043E3D1 /* NBARRuschaUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AE3C516A26684B3B0043E3D1 /* Build configuration list for PBXNativeTarget "NBARRuschaUITests" */;
-			buildPhases = (
-				AE3C515726684B3B0043E3D1 /* Sources */,
-				AE3C515826684B3B0043E3D1 /* Frameworks */,
-				AE3C515926684B3B0043E3D1 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				AE3C515D26684B3B0043E3D1 /* PBXTargetDependency */,
-			);
-			name = NBARRuschaUITests;
-			productName = NBARRuschaUITests;
-			productReference = AE3C515B26684B3B0043E3D1 /* NBARRuschaUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -247,10 +273,6 @@
 						CreatedOnToolsVersion = 12.5;
 					};
 					AE3C514F26684B3B0043E3D1 = {
-						CreatedOnToolsVersion = 12.5;
-						TestTargetID = AE3C513E26684B3A0043E3D1;
-					};
-					AE3C515A26684B3B0043E3D1 = {
 						CreatedOnToolsVersion = 12.5;
 						TestTargetID = AE3C513E26684B3A0043E3D1;
 					};
@@ -271,7 +293,6 @@
 			targets = (
 				AE3C513E26684B3A0043E3D1 /* NBARRuscha */,
 				AE3C514F26684B3B0043E3D1 /* NBARRuschaTests */,
-				AE3C515A26684B3B0043E3D1 /* NBARRuschaUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -293,13 +314,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AE3C515926684B3B0043E3D1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -307,12 +321,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE82B0142676D27B00F9FE82 /* NBARNetworkDataHandler.swift in Sources */,
+				AE82B0122676D27B00F9FE82 /* NBARNetworkJSONHandler.swift in Sources */,
 				AE3C518026684BF40043E3D1 /* NBARRuschaDataModel.swift in Sources */,
+				AE82B0132676D27B00F9FE82 /* NBARNetworkImageOperation.swift in Sources */,
 				AE3C517826684BF40043E3D1 /* NBARRuschaWebView.swift in Sources */,
+				AE82B0152676D27B00F9FE82 /* NBARNetworkImageHandler.swift in Sources */,
+				AE82B00C2676D27B00F9FE82 /* NBARNetworkSession.swift in Sources */,
 				AE3C514326684B3A0043E3D1 /* NBARRuschaApp.swift in Sources */,
+				AE82B00E2676D27B00F9FE82 /* NBARNetworkResponse.swift in Sources */,
+				AE82B00D2676D27B00F9FE82 /* NBARNetworkImageSerialization.swift in Sources */,
+				AE82B00F2676D27B00F9FE82 /* NBARNetworkDataTask.swift in Sources */,
 				AE3C517D26684BF40043E3D1 /* NBARRuschaPicker.swift in Sources */,
 				AE3C517B26684BF40043E3D1 /* NBARJSONTask.swift in Sources */,
 				AE3C517C26684BF40043E3D1 /* NBARImageTask.swift in Sources */,
+				AE82B0112676D27B00F9FE82 /* NBARNetworkJSONOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,15 +343,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE3C515526684B3B0043E3D1 /* NBARRuschaTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AE3C515726684B3B0043E3D1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AE3C516026684B3B0043E3D1 /* NBARRuschaUITests.swift in Sources */,
+				AE82B02A2676D30300F9FE82 /* NBARNetworkImageHandler.swift in Sources */,
+				AE82B02F2676D30300F9FE82 /* NBARNetworkDataTask.swift in Sources */,
+				AE82B0272676D2A100F9FE82 /* NBARNetworkJSONHandlerTestCase.swift in Sources */,
+				AE82B0282676D2A100F9FE82 /* NBARNetworkImageOperationTestCase.swift in Sources */,
+				AE82B0302676D30300F9FE82 /* NBARNetworkSession.swift in Sources */,
+				AE82B0222676D2A100F9FE82 /* NBARNetworkImageSerializationTestCase.swift in Sources */,
+				AE82B0232676D2A100F9FE82 /* NBARNetworkDataTaskTestCase.swift in Sources */,
+				AE82B0212676D2A100F9FE82 /* NBARNetworkImageHandlerTestCase.swift in Sources */,
+				AE82B02E2676D30300F9FE82 /* NBARNetworkImageSerialization.swift in Sources */,
+				AE82B0312676D30300F9FE82 /* NBARNetworkDataHandler.swift in Sources */,
+				AE82B0252676D2A100F9FE82 /* NBARNetworkSessionTestCase.swift in Sources */,
+				AE82B02B2676D30300F9FE82 /* NBARNetworkImageOperation.swift in Sources */,
+				AE82B0292676D30300F9FE82 /* NBARNetworkJSONHandler.swift in Sources */,
+				AE82B02D2676D30300F9FE82 /* NBARNetworkResponse.swift in Sources */,
+				AE82B02C2676D30300F9FE82 /* NBARNetworkJSONOperation.swift in Sources */,
+				AE82B0242676D2A100F9FE82 /* NBARNetworkDataHandlerTestCase.swift in Sources */,
+				AE82B0202676D2A100F9FE82 /* NBARNetworkJSONOperationTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,11 +370,6 @@
 			isa = PBXTargetDependency;
 			target = AE3C513E26684B3A0043E3D1 /* NBARRuscha */;
 			targetProxy = AE3C515126684B3B0043E3D1 /* PBXContainerItemProxy */;
-		};
-		AE3C515D26684B3B0043E3D1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AE3C513E26684B3A0043E3D1 /* NBARRuscha */;
-			targetProxy = AE3C515C26684B3B0043E3D1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -552,46 +578,6 @@
 			};
 			name = Release;
 		};
-		AE3C516B26684B3B0043E3D1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WLPE3F9YYB;
-				INFOPLIST_FILE = NBARRuschaUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.northbronson.NBARRuschaUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = NBARRuscha;
-			};
-			name = Debug;
-		};
-		AE3C516C26684B3B0043E3D1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WLPE3F9YYB;
-				INFOPLIST_FILE = NBARRuschaUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.northbronson.NBARRuschaUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = NBARRuscha;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -618,15 +604,6 @@
 			buildConfigurations = (
 				AE3C516826684B3B0043E3D1 /* Debug */,
 				AE3C516926684B3B0043E3D1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		AE3C516A26684B3B0043E3D1 /* Build configuration list for PBXNativeTarget "NBARRuschaUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AE3C516B26684B3B0043E3D1 /* Debug */,
-				AE3C516C26684B3B0043E3D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
