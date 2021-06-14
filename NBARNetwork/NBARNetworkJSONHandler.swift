@@ -21,10 +21,6 @@ protocol NBARNetworkJSONHandlerJSONSerialization {
   static func jsonObject(with data: Foundation.Data, options opt: Foundation.JSONSerialization.ReadingOptions) throws -> Self.JSON
 }
 
-extension JSONSerialization : NBARNetworkJSONHandlerJSONSerialization {
-
-}
-
 struct NBARNetworkJSONHandlerError : Swift.Error {
   enum Code {
     case responseError

@@ -7,14 +7,9 @@
 
 import CoreGraphics
 import Foundation
-import UIKit
 
 protocol NBARNetworkImageSerializationImage {
   init?(data: Foundation.Data, scale: CoreGraphics.CGFloat)
-}
-
-extension UIImage : NBARNetworkImageSerializationImage {
-
 }
 
 struct NBARNetworkImageSerializationError : Swift.Error {
