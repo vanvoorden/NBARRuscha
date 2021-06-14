@@ -7,26 +7,6 @@
 
 import XCTest
 
-private func DataTestDouble() -> Foundation.Data {
-  return Foundation.Data(Swift.UInt8.min...Swift.UInt8.max)
-}
-
-private func HTTPURLResponseTestDouble(_ headerFields: Swift.Dictionary<Swift.String, Swift.String>? = nil) -> Foundation.URLResponse {
-  return Foundation.HTTPURLResponse(url: URLTestDouble(), statusCode: 200, httpVersion: "HTTP/1.1", headerFields: headerFields)!
-}
-
-private func NSErrorTestDouble() -> Foundation.NSError {
-  return Foundation.NSError(domain: "domain", code: 0, userInfo: nil)
-}
-
-private func URLRequestTestDouble() -> Foundation.URLRequest {
-  return Foundation.URLRequest(url: URLTestDouble())
-}
-
-private func URLTestDouble() -> Foundation.URL {
-  return Foundation.URL(string: "http://localhost/")!
-}
-
 private struct NBARNetworkJSONHandlerDataHandlerTestDouble : NBARNetworkJSONHandlerDataHandler {
   static var response: NBARNetworkResponse?
   static var data: Foundation.Data?
@@ -72,12 +52,12 @@ final class NBARNetworkJSONHandlerTestCase : XCTestCase {
     NBARNetworkJSONHandlerJSONSerializationTestDouble.error = nil
   }
   
-  private func testDataError() {
+  func testDataError() {
     NBARNetworkJSONHandlerDataHandlerTestDouble.error = NSErrorTestDouble()
     
     NBARNetworkJSONHandlerJSONSerializationTestDouble.error = NSErrorTestDouble()
     
-    let response = NBARNetworkResponse(data: DataTestDouble(), response: HTTPURLResponseTestDouble(["CONTENT-TYPE": "JSON"]), error: NSErrorTestDouble())
+    let response = NBARNetworkResponse(data: DataTestDouble(), response: HTTPURLResponseTestDouble(headerFields: ["CONTENT-TYPE": "JSON"]), error: NSErrorTestDouble())
     do {
       self.json = try NBARNetworkJSONHandler<NBARNetworkJSONHandlerDataHandlerTestDouble, NBARNetworkJSONHandlerJSONSerializationTestDouble>.json(with: response, options: [])
     } catch {
@@ -96,12 +76,12 @@ final class NBARNetworkJSONHandlerTestCase : XCTestCase {
     XCTAssert(self.error!.underlying! as Foundation.NSError === NBARNetworkJSONHandlerDataHandlerTestDouble.error!)
   }
   
-  private func testJSONError() {
+  func testJSONError() {
     NBARNetworkJSONHandlerDataHandlerTestDouble.data = DataTestDouble()
     
     NBARNetworkJSONHandlerJSONSerializationTestDouble.error = NSErrorTestDouble()
     
-    let response = NBARNetworkResponse(data: DataTestDouble(), response: HTTPURLResponseTestDouble(["CONTENT-TYPE": "JSON"]), error: NSErrorTestDouble())
+    let response = NBARNetworkResponse(data: DataTestDouble(), response: HTTPURLResponseTestDouble(headerFields: ["CONTENT-TYPE": "JSON"]), error: NSErrorTestDouble())
     do {
       self.json = try NBARNetworkJSONHandler<NBARNetworkJSONHandlerDataHandlerTestDouble, NBARNetworkJSONHandlerJSONSerializationTestDouble>.json(with: response, options: [])
     } catch {
@@ -120,12 +100,12 @@ final class NBARNetworkJSONHandlerTestCase : XCTestCase {
     XCTAssert(self.error!.underlying! as Foundation.NSError === NBARNetworkJSONHandlerJSONSerializationTestDouble.error!)
   }
   
-  private func testResponseError() {
+  func testResponseError() {
     NBARNetworkJSONHandlerDataHandlerTestDouble.error = NSErrorTestDouble()
     
     NBARNetworkJSONHandlerJSONSerializationTestDouble.error = NSErrorTestDouble()
     
-    let response = NBARNetworkResponse(data: DataTestDouble(), response: HTTPURLResponseTestDouble(["CONTENT-TYPE": "IMAGE"]), error: NSErrorTestDouble())
+    let response = NBARNetworkResponse(data: DataTestDouble(), response: HTTPURLResponseTestDouble(headerFields: ["CONTENT-TYPE": "IMAGE"]), error: NSErrorTestDouble())
     do {
       self.json = try NBARNetworkJSONHandler<NBARNetworkJSONHandlerDataHandlerTestDouble, NBARNetworkJSONHandlerJSONSerializationTestDouble>.json(with: response, options: [])
     } catch {
@@ -142,12 +122,12 @@ final class NBARNetworkJSONHandlerTestCase : XCTestCase {
     XCTAssert(self.error!.underlying == nil)
   }
   
-  private func testJSONSuccess() {
+  func testJSONSuccess() {
     NBARNetworkJSONHandlerDataHandlerTestDouble.data = DataTestDouble()
     
     NBARNetworkJSONHandlerJSONSerializationTestDouble.json = Foundation.NSObject()
     
-    let response = NBARNetworkResponse(data: DataTestDouble(), response: HTTPURLResponseTestDouble(["CONTENT-TYPE": "JSON"]), error: NSErrorTestDouble())
+    let response = NBARNetworkResponse(data: DataTestDouble(), response: HTTPURLResponseTestDouble(headerFields: ["CONTENT-TYPE": "JSON"]), error: NSErrorTestDouble())
     do {
       self.json = try NBARNetworkJSONHandler<NBARNetworkJSONHandlerDataHandlerTestDouble, NBARNetworkJSONHandlerJSONSerializationTestDouble>.json(with: response, options: [])
     } catch {

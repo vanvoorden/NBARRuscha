@@ -7,27 +7,6 @@
 
 import XCTest
 
-//  TODO: COLLECT THESE HALPERS!
-private func DataTestDouble() -> Foundation.Data {
-  return Foundation.Data(Swift.UInt8.min...Swift.UInt8.max)
-}
-
-private func HTTPURLResponseTestDouble() -> Foundation.URLResponse {
-  return Foundation.HTTPURLResponse(url: URLTestDouble(), statusCode: 0, httpVersion: "HTTP/1.1", headerFields: nil)!
-}
-
-private func NSErrorTestDouble() -> Foundation.NSError {
-  return Foundation.NSError(domain: "domain", code: 0)
-}
-
-private func URLRequestTestDouble() -> Foundation.URLRequest {
-  return Foundation.URLRequest(url: URLTestDouble())
-}
-
-private func URLTestDouble() -> Foundation.URL {
-  return Foundation.URL(string: "http://localhost/")!
-}
-
 private final class NBARNetworkDataTaskSessionTestDouble : NBARNetworkDataTaskSession {
   static var request: Foundation.URLRequest?
   static var completionHandler: CompletionHandler?
@@ -67,7 +46,7 @@ final class NBARNetworkDataTaskTestCase : XCTestCase {
     NBARNetworkDataTaskSessionTestDouble.dataTask.didSuspend = false
   }
   
-  private func testCancel() {
+  func testCancel() {
     let task = NBARNetworkDataTask<NBARNetworkDataTaskSessionTestDouble>(with: URLRequestTestDouble()) { response in
       self.response = response
     }
@@ -92,7 +71,7 @@ final class NBARNetworkDataTaskTestCase : XCTestCase {
     XCTAssert(NBARNetworkDataTaskSessionTestDouble.dataTask.didSuspend == false)
   }
   
-  private func testResume() {
+  func testResume() {
     let task = NBARNetworkDataTask<NBARNetworkDataTaskSessionTestDouble>(with: URLRequestTestDouble()) { response in
       self.response = response
     }
@@ -117,7 +96,7 @@ final class NBARNetworkDataTaskTestCase : XCTestCase {
     XCTAssert(NBARNetworkDataTaskSessionTestDouble.dataTask.didSuspend == false)
   }
   
-  private func testSuspend() {
+  func testSuspend() {
     let task = NBARNetworkDataTask<NBARNetworkDataTaskSessionTestDouble>(with: URLRequestTestDouble()) { response in
       self.response = response
     }

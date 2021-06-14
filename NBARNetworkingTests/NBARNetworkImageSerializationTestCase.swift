@@ -7,10 +7,6 @@
 
 import XCTest
 
-private func DataTestDouble() -> Foundation.Data {
-  return Foundation.Data(Swift.UInt8.min...Swift.UInt8.max)
-}
-
 private struct NBARNetworkImageSerializationImageFailureTestDouble : NBARNetworkImageSerializationImage {
   static var data: Foundation.Data?
   static var scale: CoreGraphics.CGFloat?
@@ -43,7 +39,7 @@ final class NBARNetworkImageSerializationTestCase: XCTestCase {
     NBARNetworkImageSerializationImageSuccessTestDouble.scale = nil
   }
   
-  private func testFailure() {
+  func testFailure() {
     let data = DataTestDouble()
     do {
       self.image = try NBARNetworkImageSerialization<NBARNetworkImageSerializationImageFailureTestDouble>.image(with: data, scale: 1.0)
@@ -58,7 +54,7 @@ final class NBARNetworkImageSerializationTestCase: XCTestCase {
     XCTAssert(self.error!.code == .imageError)
   }
   
-  private func testSuccess() {
+  func testSuccess() {
     let data = DataTestDouble()
     do {
       self.image = try NBARNetworkImageSerialization<NBARNetworkImageSerializationImageSuccessTestDouble>.image(with: data, scale: 1.0)

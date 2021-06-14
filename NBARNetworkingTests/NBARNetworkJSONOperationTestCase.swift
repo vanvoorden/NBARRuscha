@@ -7,27 +7,6 @@
 
 import XCTest
 
-//  TODO: COLLECT THESE HALPERS!
-private func DataTestDouble() -> Foundation.Data {
-  return Foundation.Data(Swift.UInt8.min...Swift.UInt8.max)
-}
-
-private func HTTPURLResponseTestDouble() -> Foundation.URLResponse {
-  return Foundation.HTTPURLResponse(url: URLTestDouble(), statusCode: 0, httpVersion: "HTTP/1.1", headerFields: nil)!
-}
-
-private func NSErrorTestDouble() -> Foundation.NSError {
-  return Foundation.NSError(domain: "domain", code: 0)
-}
-
-private func URLRequestTestDouble() -> Foundation.URLRequest {
-  return Foundation.URLRequest(url: URLTestDouble())
-}
-
-private func URLTestDouble() -> Foundation.URL {
-  return Foundation.URL(string: "http://localhost/")!
-}
-
 private final class NBARNetworkJSONOperationDataTaskTestDouble : NBARNetworkJSONOperationDataTask {
   static var request: URLRequest?
   static var completionHandler: CompletionHandler?
@@ -89,7 +68,7 @@ final class NBARNetworkJSONOperationTestCase : XCTestCase {
     NBARNetworkJSONOperationJSONHandlerTestDouble.error = nil
   }
   
-  private func testCancel() {
+  func testCancel() {
     let operation = NBARNetworkJSONOperation<NBARNetworkJSONOperationDataTaskTestDouble, NBARNetworkJSONOperationJSONHandlerTestDouble>(with: URLRequestTestDouble(), options: []) { json, response, error in
       self.json = json
       self.response = response
@@ -107,7 +86,7 @@ final class NBARNetworkJSONOperationTestCase : XCTestCase {
     XCTAssert(NBARNetworkJSONOperationDataTaskTestDouble.didSuspend == false)
   }
   
-  private func testFailure() {
+  func testFailure() {
     NBARNetworkJSONOperationJSONHandlerTestDouble.error = NSErrorTestDouble()
     
     _ = NBARNetworkJSONOperation<NBARNetworkJSONOperationDataTaskTestDouble, NBARNetworkJSONOperationJSONHandlerTestDouble>(with: URLRequestTestDouble(), options: []) { json, response, error in
@@ -133,7 +112,7 @@ final class NBARNetworkJSONOperationTestCase : XCTestCase {
     XCTAssert(self.error! as NSError === NBARNetworkJSONOperationJSONHandlerTestDouble.error)
   }
   
-  private func testResume() {
+  func testResume() {
     let operation = NBARNetworkJSONOperation<NBARNetworkJSONOperationDataTaskTestDouble, NBARNetworkJSONOperationJSONHandlerTestDouble>(with: URLRequestTestDouble(), options: []) { json, response, error in
       self.json = json
       self.response = response
@@ -151,7 +130,7 @@ final class NBARNetworkJSONOperationTestCase : XCTestCase {
     XCTAssert(NBARNetworkJSONOperationDataTaskTestDouble.didSuspend == false)
   }
   
-  private func testSuccess() {
+  func testSuccess() {
     NBARNetworkJSONOperationJSONHandlerTestDouble.json = Foundation.NSObject()
     
     _ = NBARNetworkJSONOperation<NBARNetworkJSONOperationDataTaskTestDouble, NBARNetworkJSONOperationJSONHandlerTestDouble>(with: URLRequestTestDouble(), options: []) { json, response, error in
@@ -177,7 +156,7 @@ final class NBARNetworkJSONOperationTestCase : XCTestCase {
     XCTAssert(self.error == nil)
   }
   
-  private func testSuspend() {
+  func testSuspend() {
     let operation = NBARNetworkJSONOperation<NBARNetworkJSONOperationDataTaskTestDouble, NBARNetworkJSONOperationJSONHandlerTestDouble>(with: URLRequestTestDouble(), options: []) { json, response, error in
       self.json = json
       self.response = response

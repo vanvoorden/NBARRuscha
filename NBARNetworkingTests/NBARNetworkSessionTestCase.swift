@@ -7,26 +7,6 @@
 
 import XCTest
 
-private func DataTestDouble() -> Foundation.Data {
-  return Foundation.Data(Swift.UInt8.min...Swift.UInt8.max)
-}
-
-private func HTTPURLResponseTestDouble() -> Foundation.URLResponse {
-  return Foundation.HTTPURLResponse(url: URLTestDouble(), statusCode: 0, httpVersion: "HTTP/1.1", headerFields: nil)!
-}
-
-private func NSErrorTestDouble() -> Foundation.NSError {
-  return Foundation.NSError(domain: "domain", code: 0)
-}
-
-private func URLRequestTestDouble() -> Foundation.URLRequest {
-  return Foundation.URLRequest(url: URLTestDouble())
-}
-
-private func URLTestDouble() -> Foundation.URL {
-  return Foundation.URL(string: "http://localhost/")!
-}
-
 private final class NBARNetworkSessionDataTaskTestDouble : NBARNetworkSessionDataTask {
   func cancel() {
     
@@ -59,7 +39,7 @@ private final class NBARNetworkSessionURLSessionTestDouble : NBARNetworkSessionU
 final class NBARNetworkSessionTestCase : XCTestCase {
   private var response: NBARNetworkResponse?
   
-  private func testDataTask() {
+  func testDataTask() {
     let task = NBARNetworkSession<NBARNetworkSessionURLSessionTestDouble>.dataTask(with: URLRequestTestDouble()) { response in
       self.response = response
     }

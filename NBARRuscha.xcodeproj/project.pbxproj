@@ -43,6 +43,7 @@
 		AE82B02F2676D30300F9FE82 /* NBARNetworkDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82B0052676D27B00F9FE82 /* NBARNetworkDataTask.swift */; };
 		AE82B0302676D30300F9FE82 /* NBARNetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82B0022676D27B00F9FE82 /* NBARNetworkSession.swift */; };
 		AE82B0312676D30300F9FE82 /* NBARNetworkDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82B00A2676D27B00F9FE82 /* NBARNetworkDataHandler.swift */; };
+		AE82B0332676D63C00F9FE82 /* NBARNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82B0322676D63C00F9FE82 /* NBARNetwork.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,7 @@
 		AE82B01C2676D2A100F9FE82 /* NBARNetworkSessionTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARNetworkSessionTestCase.swift; sourceTree = "<group>"; };
 		AE82B01E2676D2A100F9FE82 /* NBARNetworkJSONHandlerTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARNetworkJSONHandlerTestCase.swift; sourceTree = "<group>"; };
 		AE82B01F2676D2A100F9FE82 /* NBARNetworkImageOperationTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARNetworkImageOperationTestCase.swift; sourceTree = "<group>"; };
+		AE82B0322676D63C00F9FE82 /* NBARNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBARNetwork.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,14 +211,15 @@
 		AE82B0162676D2A100F9FE82 /* NBARNetworkingTests */ = {
 			isa = PBXGroup;
 			children = (
-				AE82B0172676D2A100F9FE82 /* NBARNetworkJSONOperationTestCase.swift */,
-				AE82B0182676D2A100F9FE82 /* NBARNetworkImageHandlerTestCase.swift */,
-				AE82B0192676D2A100F9FE82 /* NBARNetworkImageSerializationTestCase.swift */,
-				AE82B01A2676D2A100F9FE82 /* NBARNetworkDataTaskTestCase.swift */,
+				AE82B0322676D63C00F9FE82 /* NBARNetwork.swift */,
 				AE82B01B2676D2A100F9FE82 /* NBARNetworkDataHandlerTestCase.swift */,
-				AE82B01C2676D2A100F9FE82 /* NBARNetworkSessionTestCase.swift */,
-				AE82B01E2676D2A100F9FE82 /* NBARNetworkJSONHandlerTestCase.swift */,
+				AE82B01A2676D2A100F9FE82 /* NBARNetworkDataTaskTestCase.swift */,
+				AE82B0182676D2A100F9FE82 /* NBARNetworkImageHandlerTestCase.swift */,
 				AE82B01F2676D2A100F9FE82 /* NBARNetworkImageOperationTestCase.swift */,
+				AE82B0192676D2A100F9FE82 /* NBARNetworkImageSerializationTestCase.swift */,
+				AE82B01E2676D2A100F9FE82 /* NBARNetworkJSONHandlerTestCase.swift */,
+				AE82B0172676D2A100F9FE82 /* NBARNetworkJSONOperationTestCase.swift */,
+				AE82B01C2676D2A100F9FE82 /* NBARNetworkSessionTestCase.swift */,
 			);
 			path = NBARNetworkingTests;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				AE82B0272676D2A100F9FE82 /* NBARNetworkJSONHandlerTestCase.swift in Sources */,
 				AE82B0282676D2A100F9FE82 /* NBARNetworkImageOperationTestCase.swift in Sources */,
 				AE82B0302676D30300F9FE82 /* NBARNetworkSession.swift in Sources */,
+				AE82B0332676D63C00F9FE82 /* NBARNetwork.swift in Sources */,
 				AE82B0222676D2A100F9FE82 /* NBARNetworkImageSerializationTestCase.swift in Sources */,
 				AE82B0232676D2A100F9FE82 /* NBARNetworkDataTaskTestCase.swift in Sources */,
 				AE82B0212676D2A100F9FE82 /* NBARNetworkImageHandlerTestCase.swift in Sources */,
