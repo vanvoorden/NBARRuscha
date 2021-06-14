@@ -12,9 +12,9 @@ protocol NBARNetworkImageHandlerDataHandler {
   static func data(with response: NBARNetworkResponse) throws -> Foundation.Data
 }
 
-//extension NBARNetworkDataHandler : NBARNetworkImageHandlerDataHandler {
-//
-//}
+extension NBARNetworkDataHandler : NBARNetworkImageHandlerDataHandler {
+
+}
 
 protocol NBARNetworkImageHandlerImageSerialization {
   associatedtype Image
@@ -22,9 +22,9 @@ protocol NBARNetworkImageHandlerImageSerialization {
   static func image(with data: Foundation.Data, scale: CoreGraphics.CGFloat) throws -> Self.Image
 }
 
-//extension NBARNetworkImageSerialization : NBARNetworkImageHandlerImageSerialization {
-//  
-//}
+extension NBARNetworkImageSerialization : NBARNetworkImageHandlerImageSerialization {
+  
+}
 
 struct NBARNetworkImageHandlerError : Swift.Error {
   enum Code {

@@ -195,15 +195,15 @@
 		AE82B0012676D27B00F9FE82 /* NBARNetworking */ = {
 			isa = PBXGroup;
 			children = (
-				AE82B0022676D27B00F9FE82 /* NBARNetworkSession.swift */,
-				AE82B0032676D27B00F9FE82 /* NBARNetworkImageSerialization.swift */,
-				AE82B0042676D27B00F9FE82 /* NBARNetworkResponse.swift */,
-				AE82B0052676D27B00F9FE82 /* NBARNetworkDataTask.swift */,
-				AE82B0072676D27B00F9FE82 /* NBARNetworkJSONOperation.swift */,
-				AE82B0082676D27B00F9FE82 /* NBARNetworkJSONHandler.swift */,
-				AE82B0092676D27B00F9FE82 /* NBARNetworkImageOperation.swift */,
 				AE82B00A2676D27B00F9FE82 /* NBARNetworkDataHandler.swift */,
+				AE82B0052676D27B00F9FE82 /* NBARNetworkDataTask.swift */,
 				AE82B00B2676D27B00F9FE82 /* NBARNetworkImageHandler.swift */,
+				AE82B0092676D27B00F9FE82 /* NBARNetworkImageOperation.swift */,
+				AE82B0032676D27B00F9FE82 /* NBARNetworkImageSerialization.swift */,
+				AE82B0082676D27B00F9FE82 /* NBARNetworkJSONHandler.swift */,
+				AE82B0072676D27B00F9FE82 /* NBARNetworkJSONOperation.swift */,
+				AE82B0042676D27B00F9FE82 /* NBARNetworkResponse.swift */,
+				AE82B0022676D27B00F9FE82 /* NBARNetworkSession.swift */,
 			);
 			path = NBARNetworking;
 			sourceTree = "<group>";

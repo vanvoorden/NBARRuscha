@@ -1,6 +1,6 @@
 //
 //  NBARNetworkImageSerializationTestCase.swift
-//  NBNetworkingTests
+//  NBARNetworkingTests
 //
 //  Created by Rick Van Voorden on 6/10/21.
 //

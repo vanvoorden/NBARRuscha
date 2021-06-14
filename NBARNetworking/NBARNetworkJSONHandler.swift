@@ -11,9 +11,9 @@ protocol NBARNetworkJSONHandlerDataHandler {
   static func data(with response: NBARNetworkResponse) throws -> Foundation.Data
 }
 
-//extension NBARNetworkDataHandler : NBARNetworkJSONHandlerDataHandler{
-//
-//}
+extension NBARNetworkDataHandler : NBARNetworkJSONHandlerDataHandler{
+
+}
 
 protocol NBARNetworkJSONHandlerJSONSerialization {
   associatedtype JSON
@@ -21,9 +21,9 @@ protocol NBARNetworkJSONHandlerJSONSerialization {
   static func jsonObject(with data: Foundation.Data, options opt: Foundation.JSONSerialization.ReadingOptions) throws -> Self.JSON
 }
 
-//extension JSONSerialization : NBARNetworkJSONHandlerJSONSerialization {
-//
-//}
+extension JSONSerialization : NBARNetworkJSONHandlerJSONSerialization {
+
+}
 
 struct NBARNetworkJSONHandlerError : Swift.Error {
   enum Code {
