@@ -12,6 +12,16 @@ extension Foundation.JSONSerialization : NBARNetworkJSONHandlerJSONSerialization
   
 }
 
+extension Foundation.URLRequest {
+  init?(string: String, cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy, timeoutInterval: TimeInterval = 60.0) {
+    if let url = URL(string: string) {
+      self.init(url: url, cachePolicy: cachePolicy, timeoutInterval: timeoutInterval)
+    } else {
+      return nil
+    }
+  }
+}
+
 extension Foundation.URLSession : NBARNetworkSessionURLSession {
   
 }
