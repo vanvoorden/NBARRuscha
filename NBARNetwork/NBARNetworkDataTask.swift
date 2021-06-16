@@ -8,7 +8,7 @@
 import Foundation
 
 protocol NBARNetworkDataTaskSession {
-  associatedtype DataTask : NBARNetworkSessionDataTask
+  associatedtype DataTask : NBARNetworkSessionURLSessionDataTask
   
   typealias CompletionHandler = (NBARNetworkResponse) -> Swift.Void
   static func dataTask(with request: Foundation.URLRequest, completionHandler: @escaping Self.CompletionHandler) -> Self.DataTask

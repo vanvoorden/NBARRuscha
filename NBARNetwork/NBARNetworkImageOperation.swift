@@ -60,4 +60,3 @@ final class NBARNetworkImageOperation<DataTask, ImageHandler> where DataTask : N
     self.dataTask.suspend()
   }
 }
-

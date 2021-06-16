@@ -26,11 +26,10 @@ extension Foundation.URLSession : NBARNetworkSessionURLSession {
   
 }
 
-extension Foundation.URLSessionDataTask : NBARNetworkSessionDataTask {
+extension Foundation.URLSessionDataTask : NBARNetworkSessionURLSessionDataTask {
   
 }
 
 extension UIKit.UIImage : NBARNetworkImageSerializationImage {
   
 }
-

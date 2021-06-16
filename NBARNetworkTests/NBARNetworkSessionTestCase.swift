@@ -1,13 +1,13 @@
 //
 //  NBARNetworkSessionTestCase.swift
-//  NBARNetworkingTests
+//  NBARNetworkTests
 //
 //  Created by Rick Van Voorden on 6/11/21.
 //
 
 import XCTest
 
-private final class NBARNetworkSessionDataTaskTestDouble : NBARNetworkSessionDataTask {
+private final class NBARNetworkSessionURLSessionDataTaskTestDouble : NBARNetworkSessionURLSessionDataTask {
   func cancel() {
     
   }
@@ -26,9 +26,9 @@ private final class NBARNetworkSessionURLSessionTestDouble : NBARNetworkSessionU
   
   var request: Foundation.URLRequest?
   var completionHandler: CompletionHandler?
-  let dataTask = NBARNetworkSessionDataTaskTestDouble()
+  let dataTask = NBARNetworkSessionURLSessionDataTaskTestDouble()
   
-  func dataTask(with request: Foundation.URLRequest, completionHandler: @escaping CompletionHandler) -> NBARNetworkSessionDataTaskTestDouble {
+  func dataTask(with request: Foundation.URLRequest, completionHandler: @escaping CompletionHandler) -> NBARNetworkSessionURLSessionDataTaskTestDouble {
     self.request = request
     self.completionHandler = completionHandler
     return self.dataTask

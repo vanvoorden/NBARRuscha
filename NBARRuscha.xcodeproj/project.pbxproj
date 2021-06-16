@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		AE3C514326684B3A0043E3D1 /* NBARRuschaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C514226684B3A0043E3D1 /* NBARRuschaApp.swift */; };
 		AE3C517826684BF40043E3D1 /* NBARRuschaWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C516F26684BF30043E3D1 /* NBARRuschaWebView.swift */; };
-		AE3C517B26684BF40043E3D1 /* NBARJSONTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C517226684BF30043E3D1 /* NBARJSONTask.swift */; };
-		AE3C517C26684BF40043E3D1 /* NBARImageTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C517326684BF40043E3D1 /* NBARImageTask.swift */; };
 		AE3C517D26684BF40043E3D1 /* NBARRuschaPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C517426684BF40043E3D1 /* NBARRuschaPicker.swift */; };
 		AE3C517E26684BF40043E3D1 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE3C517526684BF40043E3D1 /* Launch Screen.storyboard */; };
 		AE3C517F26684BF40043E3D1 /* Getty.png in Resources */ = {isa = PBXBuildFile; fileRef = AE3C517626684BF40043E3D1 /* Getty.png */; };
@@ -83,8 +81,6 @@
 		AE3C515026684B3B0043E3D1 /* NBARRuschaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NBARRuschaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE3C515626684B3B0043E3D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE3C516F26684BF30043E3D1 /* NBARRuschaWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARRuschaWebView.swift; sourceTree = "<group>"; };
-		AE3C517226684BF30043E3D1 /* NBARJSONTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARJSONTask.swift; sourceTree = "<group>"; };
-		AE3C517326684BF40043E3D1 /* NBARImageTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARImageTask.swift; sourceTree = "<group>"; };
 		AE3C517426684BF40043E3D1 /* NBARRuschaPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARRuschaPicker.swift; sourceTree = "<group>"; };
 		AE3C517526684BF40043E3D1 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		AE3C517626684BF40043E3D1 /* Getty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Getty.png; sourceTree = "<group>"; };
@@ -177,8 +173,6 @@
 				AE3C517626684BF40043E3D1 /* Getty.png */,
 				AE3C514B26684B3B0043E3D1 /* Info.plist */,
 				AE3C517526684BF40043E3D1 /* Launch Screen.storyboard */,
-				AE3C517326684BF40043E3D1 /* NBARImageTask.swift */,
-				AE3C517226684BF30043E3D1 /* NBARJSONTask.swift */,
 				AE3C514226684B3A0043E3D1 /* NBARRuschaApp.swift */,
 				AE3C517726684BF40043E3D1 /* NBARRuschaDataModel.swift */,
 				AE3C517426684BF40043E3D1 /* NBARRuschaPicker.swift */,
@@ -341,8 +335,6 @@
 				AE82B00D2676D27B00F9FE82 /* NBARNetworkImageSerialization.swift in Sources */,
 				AE82B00F2676D27B00F9FE82 /* NBARNetworkDataTask.swift in Sources */,
 				AE3C517D26684BF40043E3D1 /* NBARRuschaPicker.swift in Sources */,
-				AE3C517B26684BF40043E3D1 /* NBARJSONTask.swift in Sources */,
-				AE3C517C26684BF40043E3D1 /* NBARImageTask.swift in Sources */,
 				AE82B0112676D27B00F9FE82 /* NBARNetworkJSONOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

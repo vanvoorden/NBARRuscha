@@ -53,11 +53,9 @@ extension NBARRuschaDataModel : NBARPhotosViewDataModel {
   
   func placeholder(for anchor: NBARPhotosAnchor) -> UIImage? {
     if let image = self.resultsDictionary[anchor.id]?.image,
-       let url = URL(string: image) {
-      let request = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad)
-      if URLCache.shared.cachedResponse(for: request) != nil {
-        return nil
-      }
+       let request = URLRequest(string: image, cachePolicy: .returnCacheDataElseLoad),
+       URLCache.shared.cachedResponse(for: request) != nil {
+      return nil
     }
     return UIImage(named: "Getty.png")
   }
@@ -69,7 +67,7 @@ extension NBARRuschaDataModel : NBARPhotosViewDataModel {
       request.request { [weak self] result, error in
         DispatchQueue.main.async {
           self?.requestsDictionary[anchor.id] = nil
-          resultHandler(result, error)
+          resultHandler(result, nil)
         }
       }
       self.requestsDictionary[anchor.id] = request
@@ -82,12 +80,15 @@ extension NBARRuschaDataModel : NBARPhotosViewDataModel {
 private final class NBARRuschaDataModelImageRequest {
   private let image: String
   
-  private var array = Array<URLSessionDataTask>()
-  private var backgroundTask: UIBackgroundTaskIdentifier?
-  private var didCancel = false
-  private var didRequest = false
-  
   private let queue: DispatchQueue
+  
+  typealias ImageOperation = NBARNetworkImageOperation<NBARNetworkDataTask<NBARNetworkSession<URLSession>>, NBARNetworkImageHandler<NBARNetworkDataHandler,NBARNetworkImageSerialization<UIImage>>>
+  
+  private var imageOperation: ImageOperation?
+  
+  typealias JSONOperation = NBARNetworkJSONOperation<NBARNetworkDataTask<NBARNetworkSession<URLSession>>, NBARNetworkJSONHandler<NBARNetworkDataHandler, JSONSerialization>>
+  
+  private var jsonOperation: JSONOperation?
   
   init(_ image: String) {
     self.image = image
@@ -96,27 +97,16 @@ private final class NBARRuschaDataModelImageRequest {
   
   func cancel() {
     self.queue.async {
-      if self.didRequest {
-        self.didCancel = true
-        for task in self.array {
-          task.cancel()
-        }
-      }
+      self.imageOperation?.cancel()
+      self.jsonOperation?.cancel()
     }
   }
   
-  func request(resultHandler: @escaping (UIImage?, Dictionary<AnyHashable, Any>?) -> Void) {
+  func request(resultHandler: @escaping (UIImage?, Error?) -> Void) {
     self.queue.async {
-      if self.didRequest == false {
-        self.didRequest = true
-        let task = URLSession.shared.jsonTask(with: self.image) { [weak self] result, response, error in
-          if let error = error {
-            if let response = response {
-              print(response)
-            }
-            print(error)
-            resultHandler(nil, nil)
-          } else {
+      if let request = URLRequest(string: self.image, cachePolicy: .reloadIgnoringLocalCacheData) {
+        let jsonOperation = JSONOperation(with: request, options: []) { [weak self] result, response, error in
+          if let result = result {
             if let self = self,
                let sequences = (((result as? NSDictionary)?.object(forKey: "sequences")) as? NSArray),
                sequences.count != 0,
@@ -127,54 +117,43 @@ private final class NBARRuschaDataModelImageRequest {
                let resource = (((((images.object(at: 0) as? NSDictionary)?.object(forKey: "resource")) as? NSDictionary)?.object(forKey: "@id")) as? String) {
               let resource = resource.replacingOccurrences(of: "/full/full/0", with: "/full/1080,/0")
               self.queue.async {
-                if self.didCancel == false {
-                  let task = URLSession.shared.imageTask(with: resource) { result, response, error in
-                    if let error = error {
-                      if let response = response {
-                        print(response)
-                      }
-                      print(error)
-                      resultHandler(nil, nil)
-                    } else {
+                if let request = URLRequest(string: resource, cachePolicy: .returnCacheDataElseLoad) {
+                  let imageOperation = ImageOperation(with: request, scale: 1.0) { result, response, error in
+                    if let result = result {
                       resultHandler(result, nil)
+                    } else {
+                      print(response)
+                      if let error = error {
+                        print(error)
+                      }
+                      resultHandler(nil, error)
                     }
                   }
                   
-                  if let task = task {
-                    task.resume()
-                    self.array.append(task)
-                  } else {
-                    resultHandler(nil, nil)
-                  }
+                  imageOperation.resume()
+                  self.imageOperation = imageOperation
+                } else {
+                  resultHandler(nil, nil)
                 }
               }
             } else {
+              print(response)
               resultHandler(nil, nil)
             }
+          } else {
+            print(response)
+            if let error = error {
+              print(error)
+            }
+            resultHandler(nil, error)
           }
         }
         
-        if let task = task {
-          task.resume()
-          self.array.append(task)
-        }
+        jsonOperation.resume()
+        self.jsonOperation = jsonOperation
+      } else  {
+        resultHandler(nil, nil)
       }
-    }
-  }
-}
-
-private extension NBARRuschaDataModelImageRequest {
-  private func beginBackgroundTask() {
-    self.backgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
-      if let backgroundTask = self?.backgroundTask {
-        UIApplication.shared.endBackgroundTask(backgroundTask)
-      }
-    }
-  }
-  
-  private func endBackgroundTask() {
-    if let backgroundTask = self.backgroundTask {
-      UIApplication.shared.endBackgroundTask(backgroundTask)
     }
   }
 }

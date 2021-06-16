@@ -1,6 +1,6 @@
 //
 //  NBARNetworkResponse.swift
-//  NBNetworking
+//  NBARNetwork
 //
 //  Created by Rick Van Voorden on 6/8/21.
 //

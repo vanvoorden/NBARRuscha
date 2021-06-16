@@ -488,13 +488,21 @@ private final class NBARRuschaPickerDataModel : ObservableObject {
   
   func request(for manifest: String, resultHandler: @escaping (Array<NBARRuschaPickerResult>, Dictionary<AnyHashable, Any>?) -> Void) {
     ReadLocalJSON(manifest) { [weak self] result, error in
-      if let error = error {
-        if let error = error as NSError? {
-          if error.domain != NSCocoaErrorDomain || error.code != CocoaError.Code.fileReadNoSuchFile.rawValue {
+      if let result = result {
+        ParseJSON(result) { results in
+          DispatchQueue.main.async {
+            resultHandler(results, nil)
+          }
+        }
+      } else {
+        if let error = error {
+          if let error = error as NSError? {
+            if error.domain != NSCocoaErrorDomain || error.code != CocoaError.Code.fileReadNoSuchFile.rawValue {
+              print(error)
+            }
+          } else {
             print(error)
           }
-        } else {
-          print(error)
         }
         
         DispatchQueue.main.async {
@@ -509,7 +517,8 @@ private final class NBARRuschaPickerDataModel : ObservableObject {
               request.request { result, error in
                 if let result = result {
                   WriteLocalJSON(manifest, json: result) { success, error in
-                    if let error = error {
+                    if success == false,
+                       let error = error {
                       print(error)
                     }
                   }
@@ -528,12 +537,6 @@ private final class NBARRuschaPickerDataModel : ObservableObject {
             }
           }
         }
-      } else {
-        ParseJSON(result) { results in
-          DispatchQueue.main.async {
-            resultHandler(results, nil)
-          }
-        }
       }
     }
   }
@@ -542,71 +545,44 @@ private final class NBARRuschaPickerDataModel : ObservableObject {
 private final class NBARRuschaPickerDataModelJSONRequest : ObservableObject {
   private let manifest: String
   
+  private let queue: DispatchQueue
+  
   @Published var progress = 0.0
   
-  private var array = Array<URLSessionDataTask>()
-  private var backgroundTask: UIBackgroundTaskIdentifier?
-  private var didCancel = false
-  private var didRequest = false
+  typealias JSONOperation = NBARNetworkJSONOperation<NBARNetworkDataTask<NBARNetworkSession<URLSession>>, NBARNetworkJSONHandler<NBARNetworkDataHandler, JSONSerialization>>
   
-  private let queue: DispatchQueue
+  private var backgroundTask: UIBackgroundTaskIdentifier?
   
   init(_ manifest: String) {
     self.manifest = manifest
     self.queue = DispatchQueue(label: manifest)
   }
   
-  func cancel() {
+  func request(resultHandler: @escaping (Any?, Error?) -> Void) {
     self.queue.async {
-      if self.didRequest {
-        self.didCancel = true
-        for task in self.array {
-          task.cancel()
-        }
-        self.endBackgroundTask()
-      }
-    }
-  }
-  
-  func request(resultHandler: @escaping (Any?, Dictionary<AnyHashable, Any>?) -> Void) {
-    self.queue.async {
-      if self.didRequest == false {
-        self.didRequest = true
-        self.beginBackgroundTask()
-        //  TODO: MOTIVATION AND TARGET_GENERATOR
-        //  motivation=https://data.getty.edu/local/thesaurus/motivations/iiif_ap_manifest_of
-        //  target_generator=https://data.getty.edu/local/thesaurus/generators/arches
-        let string = "https://services.getty.edu/id-management/links/page/1?body_id=https://media.getty.edu/iiif/manifest/" + self.manifest
-        let task = URLSession.shared.jsonTask(with: string) { [weak self] result, response, error in
-          if let error = error {
-            if let response = response {
-              print(response)
-            }
-            print(error)
-            resultHandler(nil, nil)
-            self?.endBackgroundTask()
-          } else {
-            if let items = (((result as? NSDictionary)?.object(forKey: "items")) as? NSArray),
-               items.count != 0,
-               let target = (((((items.object(at: 0) as? NSDictionary)?.object(forKey: "target")) as? NSDictionary)?.object(forKey: "id")) as? String) {
-              self?.queue.async {
-                if self?.didCancel == false {
-                  let semaphore = DispatchSemaphore(value: 0)
-                  var count = 0
-                  var bodyIDs = Array<String>()
-                  //  TODO: MOTIVATION AND BODY_GENERATOR
-                  //  motivation=https://data.getty.edu/local/thesaurus/motivations/part_of
-                  //  body_generator=https://data.getty.edu/local/thesaurus/generators/rwo
-                  var next: String? = "https://services.getty.edu/id-management/links/page/1?target_id=" + target
-                  while let string = next {
-                    //  TODO: CHECK CANCEL BOOL ON EVERY ITERATION
-                    let task = URLSession.shared.jsonTask(with: string) { result, response, error in
-                      if let error = error {
-                        if let response = response {
-                          print(response)
-                        }
-                        print(error)
-                      } else {
+      self.beginBackgroundTask()
+      //  TODO: MOTIVATION AND TARGET_GENERATOR
+      //  motivation=https://data.getty.edu/local/thesaurus/motivations/iiif_ap_manifest_of
+      //  target_generator=https://data.getty.edu/local/thesaurus/generators/arches
+      let string = "https://services.getty.edu/id-management/links/page/1?body_id=https://media.getty.edu/iiif/manifest/" + self.manifest
+      if let request = URLRequest(string: string, cachePolicy: .reloadIgnoringLocalCacheData) {
+        let operation = JSONOperation(with: request, options: []) { [weak self] result, response, error in
+          self?.queue.async {
+            if let result = result {
+              if let items = (((result as? NSDictionary)?.object(forKey: "items")) as? NSArray),
+                 items.count != 0,
+                 let target = (((((items.object(at: 0) as? NSDictionary)?.object(forKey: "target")) as? NSDictionary)?.object(forKey: "id")) as? String) {
+                let semaphore = DispatchSemaphore(value: 0)
+                var count = 0
+                var bodyIDs = Array<String>()
+                //  TODO: MOTIVATION AND BODY_GENERATOR
+                //  motivation=https://data.getty.edu/local/thesaurus/motivations/part_of
+                //  body_generator=https://data.getty.edu/local/thesaurus/generators/rwo
+                var next: String? = "https://services.getty.edu/id-management/links/page/1?target_id=" + target
+                while let string = next {
+                  if let request = URLRequest(string: string, cachePolicy: .reloadIgnoringLocalCacheData) {
+                    let operation = JSONOperation(with: request, options: []) { result, response, error in
+                      if let result = result {
                         if let items = (((result as? NSDictionary)?.object(forKey: "items")) as? NSArray) {
                           for item in items {
                             if let bodyID = (((((item as? NSDictionary)?.object(forKey: "body")) as? NSDictionary)?.object(forKey: "id")) as? String) {
@@ -615,131 +591,130 @@ private final class NBARRuschaPickerDataModelJSONRequest : ObservableObject {
                           }
                         }
                         next = (((result as? NSDictionary)?.object(forKey: "next")) as? String)
+                      } else {
+                        print(response)
+                        if let error = error {
+                          print(error)
+                        }
                       }
                       semaphore.signal()
                     }
                     
-                    if let task = task {
-                      task.resume()
-                      self?.array.append(task)
-                      semaphore.wait()
-                    }
+                    operation.resume()
+                    semaphore.wait()
                   }
-                  
-                  self?.queue.async {
-                    if self?.didCancel == false {
-                      var json = Array<Dictionary<String, Any>>()
-                      
-                      for bodyID in bodyIDs {
-                        //  TODO: CHECK CANCEL BOOL ON EVERY ITERATION
-                        let task = URLSession.shared.jsonTask(with: bodyID) { [weak self] result, response, error in
-                          if let error = error {
-                            if let response = response {
-                              print(response)
+                }
+                
+                var json = Array<Dictionary<String, Any>>()
+                for bodyID in bodyIDs {
+                  if let request = URLRequest(string: bodyID, cachePolicy: .reloadIgnoringLocalCacheData) {
+                    let operation = JSONOperation(with: request, options: []) { result, response, error in
+                      if let result = result {
+                        if let referredToBy = ((((result as? NSDictionary)?.object(forKey: "produced_by")) as? NSDictionary)?.object(forKey: "referred_to_by") as? NSArray),
+                           referredToBy.count != 0,
+                           let dimension = ((referredToBy.object(at: 0) as? NSDictionary)?.object(forKey: "dimension") as? NSArray),
+                           dimension.count != 0,
+                           let bearing = ((dimension.object(at: 0) as? NSDictionary)?.object(forKey: "value") as? Double),
+                           let tookPlaceAt = ((((result as? NSDictionary)?.object(forKey: "produced_by")) as? NSDictionary)?.object(forKey: "took_place_at") as? NSArray),
+                           tookPlaceAt.count != 0,
+                           let viewpoint = ((tookPlaceAt.object(at: 0) as? NSDictionary)?.object(forKey: "defined_by") as? String) {
+                          let substring = viewpoint.filter { character in
+                            switch (character) {
+                            case "P":
+                              return false
+                            case "O":
+                              return false
+                            case "I":
+                              return false
+                            case "N":
+                              return false
+                            case "T":
+                              return false
+                            case "(":
+                              return false
+                            case ")":
+                              return false
+                            default:
+                              return true
                             }
-                            print(error)
-                          } else {
-                            if let referredToBy = ((((result as? NSDictionary)?.object(forKey: "produced_by")) as? NSDictionary)?.object(forKey: "referred_to_by") as? NSArray),
-                               referredToBy.count != 0,
-                               let dimension = ((referredToBy.object(at: 0) as? NSDictionary)?.object(forKey: "dimension") as? NSArray),
-                               dimension.count != 0,
-                               let bearing = ((dimension.object(at: 0) as? NSDictionary)?.object(forKey: "value") as? Double),
-                               let tookPlaceAt = ((((result as? NSDictionary)?.object(forKey: "produced_by")) as? NSDictionary)?.object(forKey: "took_place_at") as? NSArray),
-                               tookPlaceAt.count != 0,
-                               let viewpoint = ((tookPlaceAt.object(at: 0) as? NSDictionary)?.object(forKey: "defined_by") as? String) {
-                              let substring = viewpoint.filter { character in
-                                switch (character) {
-                                case "P":
-                                  return false
-                                case "O":
-                                  return false
-                                case "I":
-                                  return false
-                                case "N":
-                                  return false
-                                case "T":
-                                  return false
-                                case "(":
-                                  return false
-                                case ")":
-                                  return false
-                                default:
-                                  return true
-                                }
-                              }
-                              let components = substring.components(separatedBy: " ")
-                              if components.count == 2 {
-                                if let latitude = Double(components[1]),
-                                   let longitude = Double(components[0]),
-                                   let subjectOf = (((result as? NSDictionary)?.object(forKey: "subject_of")) as? NSArray) {
-                                  var manifestIDs = Array<String>()
-                                  for result in subjectOf {
-                                    if let manifestID = ((result as? NSDictionary)?.object(forKey: "id")) as? String,
-                                       let conformsTo = (((result as? NSDictionary)?.object(forKey: "conforms_to")) as? NSArray) {
-                                      for result in conformsTo {
-                                        if let id = (((result as? NSDictionary)?.object(forKey: "id")) as? String) {
-                                          if id == "http://iiif.io/api/presentation" {
-                                            manifestIDs.append(manifestID)
-                                          }
-                                        }
-                                      }
+                          }
+                          let components = substring.components(separatedBy: " ")
+                          if components.count == 2 {
+                            if let latitude = Double(components[1]),
+                               let longitude = Double(components[0]),
+                               let subjectOf = (((result as? NSDictionary)?.object(forKey: "subject_of")) as? NSArray) {
+                              var manifestIDs = Array<String>()
+                              for result in subjectOf {
+                                if let manifestID = ((result as? NSDictionary)?.object(forKey: "id")) as? String,
+                                   let conformsTo = (((result as? NSDictionary)?.object(forKey: "conforms_to")) as? NSArray) {
+                                  for result in conformsTo {
+                                    if let id = (((result as? NSDictionary)?.object(forKey: "id")) as? String),
+                                       id == "http://iiif.io/api/presentation" {
+                                      manifestIDs.append(manifestID)
                                     }
                                   }
-                                  if manifestIDs.count != 0 {
-                                    json.append([
-                                      "bearing": bearing,
-                                      "latitude": latitude,
-                                      "longitude": longitude,
-                                      "manifest_id": manifestIDs[0],
-                                    ])
-                                    
-                                    if json.count % 100 == 0 {
-                                      let progress = Double(json.count) / Double(bodyIDs.count)
-                                      DispatchQueue.main.async {
-                                        self?.progress = progress
-                                      }
-                                    }
+                                }
+                              }
+                              if manifestIDs.count != 0 {
+                                json.append([
+                                  "bearing": bearing,
+                                  "latitude": latitude,
+                                  "longitude": longitude,
+                                  "manifest_id": manifestIDs[0],
+                                ])
+                                
+                                if json.count % 100 == 0 {
+                                  let progress = Double(json.count) / Double(bodyIDs.count)
+                                  DispatchQueue.main.async {
+                                    self?.progress = progress
                                   }
                                 }
                               }
                             }
                           }
-                          semaphore.signal()
                         }
-                        
-                        if let task = task {
-                          task.resume()
-                          self?.array.append(task)
-                          count += 1
-                          if count == URLSession.shared.configuration.httpMaximumConnectionsPerHost {
-                            semaphore.wait()
-                            count -= 1
-                          }
+                      } else {
+                        print(response)
+                        if let error = error {
+                          print(error)
                         }
                       }
-                      
-                      while count != 0 {
-                        semaphore.wait()
-                        count -= 1
-                      }
-                      
-                      resultHandler(json, nil)
-                      self?.endBackgroundTask()
+                      semaphore.signal()
+                    }
+                    
+                    operation.resume()
+                    count += 1
+                    if count == URLSession.shared.configuration.httpMaximumConnectionsPerHost {
+                      semaphore.wait()
+                      count -= 1
                     }
                   }
                 }
+                
+                while count != 0 {
+                  semaphore.wait()
+                  count -= 1
+                }
+                
+                resultHandler(json, nil)
+                self?.endBackgroundTask()
+              } else {
+                print(response)
+                resultHandler(nil, nil)
+                self?.endBackgroundTask()
               }
             } else {
-              resultHandler(nil, nil)
+              print(response)
+              if let error = error {
+                print(error)
+              }
+              resultHandler(nil, error)
               self?.endBackgroundTask()
             }
           }
         }
         
-        if let task = task {
-          task.resume()
-          self.array.append(task)
-        }
+        operation.resume()
       }
     }
   }

@@ -1,6 +1,6 @@
 //
 //  NBARNetworkJSONHandler.swift
-//  NBNetworking
+//  NBARNetwork
 //
 //  Created by Rick Van Voorden on 6/9/21.
 //
@@ -12,7 +12,7 @@ protocol NBARNetworkJSONHandlerDataHandler {
 }
 
 extension NBARNetworkDataHandler : NBARNetworkJSONHandlerDataHandler{
-
+  
 }
 
 protocol NBARNetworkJSONHandlerJSONSerialization {

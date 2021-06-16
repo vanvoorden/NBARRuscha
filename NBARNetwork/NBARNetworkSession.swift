@@ -1,20 +1,20 @@
 //
 //  NBARNetworkSession.swift
-//  NBNetworking
+//  NBARNetwork
 //
 //  Created by Rick Van Voorden on 6/11/21.
 //
 
 import Foundation
 
-protocol NBARNetworkSessionDataTask {
+protocol NBARNetworkSessionURLSessionDataTask {
   func cancel()
   func resume()
   func suspend()
 }
 
 protocol NBARNetworkSessionURLSession {
-  associatedtype DataTask : NBARNetworkSessionDataTask
+  associatedtype DataTask : NBARNetworkSessionURLSessionDataTask
   associatedtype URLSession : NBARNetworkSessionURLSession
   
   static var shared: Self.URLSession { get }

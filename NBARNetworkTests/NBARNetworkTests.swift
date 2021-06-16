@@ -1,6 +1,6 @@
 //
 //  NBARNetwork.swift
-//  NBARNetworkingTests
+//  NBARNetworkTests
 //
 //  Created by Rick Van Voorden on 6/13/21.
 //
