@@ -24,8 +24,6 @@ extension NBARNetworkDataTask : NBARNetworkJSONOperationDataTask {
 protocol NBARNetworkJSONOperationJSONHandler {
   associatedtype JSON
   
-//  associatedtype JSONSerialization = Foundation.JSONSerialization
-  
   static func json(with response: NBARNetworkResponse, options opt: Foundation.JSONSerialization.ReadingOptions) throws -> Self.JSON
 }
 
