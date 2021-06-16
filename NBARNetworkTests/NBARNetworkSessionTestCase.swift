@@ -7,7 +7,7 @@
 
 import XCTest
 
-private final class NBARNetworkSessionURLSessionDataTaskTestDouble : NBARNetworkSessionURLSessionDataTask {
+final private class NBARNetworkSessionURLSessionDataTaskTestDouble : NBARNetworkSessionURLSessionDataTask {
   func cancel() {
     
   }
@@ -21,7 +21,7 @@ private final class NBARNetworkSessionURLSessionDataTaskTestDouble : NBARNetwork
   }
 }
 
-private final class NBARNetworkSessionURLSessionTestDouble : NBARNetworkSessionURLSession {
+final private class NBARNetworkSessionURLSessionTestDouble : NBARNetworkSessionURLSession {
   static let shared = NBARNetworkSessionURLSessionTestDouble()
   
   var request: Foundation.URLRequest?

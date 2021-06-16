@@ -7,7 +7,7 @@
 
 import XCTest
 
-private final class NBARNetworkJSONOperationDataTaskTestDouble : NBARNetworkJSONOperationDataTask {
+final private class NBARNetworkJSONOperationDataTaskTestDouble : NBARNetworkJSONOperationDataTask {
   static var request: URLRequest?
   static var completionHandler: CompletionHandler?
   

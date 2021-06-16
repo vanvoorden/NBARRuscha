@@ -77,7 +77,7 @@ extension NBARRuschaDataModel : NBARPhotosViewDataModel {
   }
 }
 
-private final class NBARRuschaDataModelImageRequest {
+final private class NBARRuschaDataModelImageRequest {
   private let image: String
   
   private let queue: DispatchQueue

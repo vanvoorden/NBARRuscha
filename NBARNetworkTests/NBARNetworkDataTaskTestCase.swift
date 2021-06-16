@@ -7,7 +7,7 @@
 
 import XCTest
 
-private final class NBARNetworkDataTaskSessionTestDouble : NBARNetworkDataTaskSession {
+final private class NBARNetworkDataTaskSessionTestDouble : NBARNetworkDataTaskSession {
   static var request: Foundation.URLRequest?
   static var completionHandler: CompletionHandler?
   static let dataTask = NBARNetworkSessionURLSessionDataTaskTestDouble()
@@ -19,7 +19,7 @@ private final class NBARNetworkDataTaskSessionTestDouble : NBARNetworkDataTaskSe
   }
 }
 
-private final class NBARNetworkSessionURLSessionDataTaskTestDouble : NBARNetworkSessionURLSessionDataTask {
+final private class NBARNetworkSessionURLSessionDataTaskTestDouble : NBARNetworkSessionURLSessionDataTask {
   var didCancel = false
   var didResume = false
   var didSuspend = false

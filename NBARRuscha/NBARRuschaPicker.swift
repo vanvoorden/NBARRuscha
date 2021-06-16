@@ -477,7 +477,7 @@ private func WriteLocalJSON(_ name: String, json: Any, completionHandler: @escap
   }
 }
 
-private final class NBARRuschaPickerDataModel : ObservableObject {
+final private class NBARRuschaPickerDataModel : ObservableObject {
   static let shared = NBARRuschaPickerDataModel()
   
   @Published var downloadingDictionary = Dictionary<String, Bool>()
@@ -542,7 +542,7 @@ private final class NBARRuschaPickerDataModel : ObservableObject {
   }
 }
 
-private final class NBARRuschaPickerDataModelJSONRequest : ObservableObject {
+final private class NBARRuschaPickerDataModelJSONRequest : ObservableObject {
   private let manifest: String
   
   private let queue: DispatchQueue
