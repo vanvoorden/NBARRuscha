@@ -549,8 +549,6 @@ final private class NBARRuschaPickerDataModelJSONRequest : ObservableObject {
   
   @Published var progress = 0.0
   
-  typealias JSONOperation = NBARNetworkJSONOperation<NBARNetworkDataTask<NBARNetworkSession<URLSession>>, NBARNetworkJSONHandler<NBARNetworkDataHandler, JSONSerialization>>
-  
   private var backgroundTask: UIBackgroundTaskIdentifier?
   
   init(_ manifest: String) {
@@ -566,7 +564,7 @@ final private class NBARRuschaPickerDataModelJSONRequest : ObservableObject {
       //  target_generator=https://data.getty.edu/local/thesaurus/generators/arches
       let string = "https://services.getty.edu/id-management/links/page/1?body_id=https://media.getty.edu/iiif/manifest/" + self.manifest
       if let request = URLRequest(string: string, cachePolicy: .reloadIgnoringLocalCacheData) {
-        let operation = JSONOperation(with: request, options: []) { [weak self] result, response, error in
+        let operation = NBARNetwork.JSONOperation(with: request, options: []) { [weak self] result, response, error in
           self?.queue.async {
             if let result = result {
               if let items = (((result as? NSDictionary)?.object(forKey: "items")) as? NSArray),
@@ -581,7 +579,7 @@ final private class NBARRuschaPickerDataModelJSONRequest : ObservableObject {
                 var next: String? = "https://services.getty.edu/id-management/links/page/1?target_id=" + target
                 while let string = next {
                   if let request = URLRequest(string: string, cachePolicy: .reloadIgnoringLocalCacheData) {
-                    let operation = JSONOperation(with: request, options: []) { result, response, error in
+                    let operation = NBARNetwork.JSONOperation(with: request, options: []) { result, response, error in
                       if let result = result {
                         if let items = (((result as? NSDictionary)?.object(forKey: "items")) as? NSArray) {
                           for item in items {
@@ -608,7 +606,7 @@ final private class NBARRuschaPickerDataModelJSONRequest : ObservableObject {
                 var json = Array<Dictionary<String, Any>>()
                 for bodyID in bodyIDs {
                   if let request = URLRequest(string: bodyID, cachePolicy: .reloadIgnoringLocalCacheData) {
-                    let operation = JSONOperation(with: request, options: []) { result, response, error in
+                    let operation = NBARNetwork.JSONOperation(with: request, options: []) { result, response, error in
                       if let result = result {
                         if let referredToBy = ((((result as? NSDictionary)?.object(forKey: "produced_by")) as? NSDictionary)?.object(forKey: "referred_to_by") as? NSArray),
                            referredToBy.count != 0,

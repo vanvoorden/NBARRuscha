@@ -82,13 +82,9 @@ final private class NBARRuschaDataModelImageRequest {
   
   private let queue: DispatchQueue
   
-  typealias ImageOperation = NBARNetworkImageOperation<NBARNetworkDataTask<NBARNetworkSession<URLSession>>, NBARNetworkImageHandler<NBARNetworkDataHandler,NBARNetworkImageSerialization<UIImage>>>
+  private var imageOperation: NBARNetwork.ImageOperation?
   
-  private var imageOperation: ImageOperation?
-  
-  typealias JSONOperation = NBARNetworkJSONOperation<NBARNetworkDataTask<NBARNetworkSession<URLSession>>, NBARNetworkJSONHandler<NBARNetworkDataHandler, JSONSerialization>>
-  
-  private var jsonOperation: JSONOperation?
+  private var jsonOperation: NBARNetwork.JSONOperation?
   
   init(_ image: String) {
     self.image = image
@@ -105,7 +101,7 @@ final private class NBARRuschaDataModelImageRequest {
   func request(resultHandler: @escaping (UIImage?, Error?) -> Void) {
     self.queue.async {
       if let request = URLRequest(string: self.image, cachePolicy: .reloadIgnoringLocalCacheData) {
-        let jsonOperation = JSONOperation(with: request, options: []) { [weak self] result, response, error in
+        let jsonOperation = NBARNetwork.JSONOperation(with: request, options: []) { [weak self] result, response, error in
           if let result = result {
             if let self = self,
                let sequences = (((result as? NSDictionary)?.object(forKey: "sequences")) as? NSArray),
@@ -118,7 +114,7 @@ final private class NBARRuschaDataModelImageRequest {
               let resource = resource.replacingOccurrences(of: "/full/full/0", with: "/full/1080,/0")
               self.queue.async {
                 if let request = URLRequest(string: resource, cachePolicy: .returnCacheDataElseLoad) {
-                  let imageOperation = ImageOperation(with: request, scale: 1.0) { result, response, error in
+                  let imageOperation = NBARNetwork.ImageOperation(with: request, scale: 1.0) { result, response, error in
                     if let result = result {
                       resultHandler(result, nil)
                     } else {

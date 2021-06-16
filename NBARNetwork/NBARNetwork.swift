@@ -1,6 +1,6 @@
 //
 //  NBARNetwork.swift
-//  NBARRuscha
+//  NBARNetwork
 //
 //  Created by Rick Van Voorden on 6/13/21.
 //
@@ -32,4 +32,9 @@ extension Foundation.URLSessionDataTask : NBARNetworkSessionURLSessionDataTask {
 
 extension UIKit.UIImage : NBARNetworkImageSerializationImage {
   
+}
+
+struct NBARNetwork {
+  typealias ImageOperation = NBARNetworkImageOperation<NBARNetworkDataTask<NBARNetworkSession<URLSession>>, NBARNetworkImageHandler<NBARNetworkDataHandler,NBARNetworkImageSerialization<UIImage>>>
+  typealias JSONOperation = NBARNetworkJSONOperation<NBARNetworkDataTask<NBARNetworkSession<URLSession>>, NBARNetworkJSONHandler<NBARNetworkDataHandler, JSONSerialization>>
 }
