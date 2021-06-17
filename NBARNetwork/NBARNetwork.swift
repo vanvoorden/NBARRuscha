@@ -13,7 +13,7 @@ extension Foundation.JSONSerialization : NBARNetworkJSONHandlerJSONSerialization
 }
 
 extension Foundation.URLRequest {
-  init?(string: String, cachePolicy: Foundation.URLRequest.CachePolicy = .useProtocolCachePolicy, timeoutInterval: Foundation.TimeInterval = 60.0) {
+  init?(string: Swift.String, cachePolicy: Foundation.URLRequest.CachePolicy = .useProtocolCachePolicy, timeoutInterval: Foundation.TimeInterval = 60.0) {
     if let url = Foundation.URL(string: string) {
       self.init(url: url, cachePolicy: cachePolicy, timeoutInterval: timeoutInterval)
     } else {
