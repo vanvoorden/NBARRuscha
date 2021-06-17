@@ -13,6 +13,9 @@ final class NBARNetworkDataHandlerTestCase : XCTestCase {
   
   func testDataError() {
     for index in 200...299 {
+      self.data = nil
+      self.error = nil
+      
       let response = NBARNetworkResponse(data: nil, response: HTTPURLResponseTestDouble(statusCode: index), error: NSErrorTestDouble())
       do {
         self.data = try NBARNetworkDataHandler.data(with: response)
@@ -20,14 +23,17 @@ final class NBARNetworkDataHandlerTestCase : XCTestCase {
         self.error = (error as! NBARNetworkDataHandlerError)
       }
       
-      XCTAssert(self.data == nil)
-      XCTAssert(self.error!.code == .dataError)
-      XCTAssert(self.error!.underlying == nil)
+      XCTAssert(self.data == nil, "Status Code \(index)")
+      XCTAssert(self.error!.code == .dataError, "Status Code \(index)")
+      XCTAssert(self.error!.underlying == nil, "Status Code \(index)")
     }
   }
   
   func testDataSuccess() {
     for index in 200...299 {
+      self.data = nil
+      self.error = nil
+      
       let response = NBARNetworkResponse(data: DataTestDouble(), response: HTTPURLResponseTestDouble(statusCode: index), error: NSErrorTestDouble())
       do {
         self.data = try NBARNetworkDataHandler.data(with: response)
@@ -35,13 +41,16 @@ final class NBARNetworkDataHandlerTestCase : XCTestCase {
         self.error = (error as! NBARNetworkDataHandlerError)
       }
       
-      XCTAssert(self.data! == response.data)
-      XCTAssert(self.error == nil)
+      XCTAssert(self.data! == response.data, "Status Code \(index)")
+      XCTAssert(self.error == nil, "Status Code \(index)")
     }
   }
   
   func testResponseError() {
     for index in 100...199 {
+      self.data = nil
+      self.error = nil
+      
       let response = NBARNetworkResponse(data: nil, response: HTTPURLResponseTestDouble(statusCode: index), error: NSErrorTestDouble())
       do {
         self.data = try NBARNetworkDataHandler.data(with: response)
@@ -49,11 +58,14 @@ final class NBARNetworkDataHandlerTestCase : XCTestCase {
         self.error = (error as! NBARNetworkDataHandlerError)
       }
       
-      XCTAssert(self.data == nil)
-      XCTAssert(self.error!.code == .responseError)
+      XCTAssert(self.data == nil, "Status Code \(index)")
+      XCTAssert(self.error!.code == .responseError, "Status Code \(index)")
     }
     
     for index in 300...599 {
+      self.data = nil
+      self.error = nil
+      
       let response = NBARNetworkResponse(data: nil, response: HTTPURLResponseTestDouble(statusCode: index), error: NSErrorTestDouble())
       do {
         self.data = try NBARNetworkDataHandler.data(with: response)
@@ -61,13 +73,16 @@ final class NBARNetworkDataHandlerTestCase : XCTestCase {
         self.error = (error as! NBARNetworkDataHandlerError)
       }
       
-      XCTAssert(self.data == nil)
-      XCTAssert(self.error!.code == .responseError)
+      XCTAssert(self.data == nil, "Status Code \(index)")
+      XCTAssert(self.error!.code == .responseError, "Status Code \(index)")
     }
   }
   
   func testResponseErrorWithData() {
     for index in 100...199 {
+      self.data = nil
+      self.error = nil
+      
       let response = NBARNetworkResponse(data: DataTestDouble(), response: HTTPURLResponseTestDouble(statusCode: index), error: NSErrorTestDouble())
       do {
         self.data = try NBARNetworkDataHandler.data(with: response)
@@ -75,11 +90,14 @@ final class NBARNetworkDataHandlerTestCase : XCTestCase {
         self.error = (error as! NBARNetworkDataHandlerError)
       }
       
-      XCTAssert(self.data == nil)
-      XCTAssert(self.error!.code == .responseError)
+      XCTAssert(self.data == nil, "Status Code \(index)")
+      XCTAssert(self.error!.code == .responseError, "Status Code \(index)")
     }
     
     for index in 300...599 {
+      self.data = nil
+      self.error = nil
+      
       let response = NBARNetworkResponse(data: DataTestDouble(), response: HTTPURLResponseTestDouble(statusCode: index), error: NSErrorTestDouble())
       do {
         self.data = try NBARNetworkDataHandler.data(with: response)
@@ -87,8 +105,8 @@ final class NBARNetworkDataHandlerTestCase : XCTestCase {
         self.error = (error as! NBARNetworkDataHandlerError)
       }
       
-      XCTAssert(self.data == nil)
-      XCTAssert(self.error!.code == .responseError)
+      XCTAssert(self.data == nil, "Status Code \(index)")
+      XCTAssert(self.error!.code == .responseError, "Status Code \(index)")
     }
   }
 }
