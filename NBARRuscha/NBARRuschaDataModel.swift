@@ -82,6 +82,8 @@ final private class NBARRuschaDataModelImageRequest {
   
   private let queue: DispatchQueue
   
+  private let semaphore = DispatchSemaphore(value: 0)
+  
   private var imageOperation: NBARNetwork.ImageOperation?
   
   private var jsonOperation: NBARNetwork.JSONOperation?
@@ -92,64 +94,61 @@ final private class NBARRuschaDataModelImageRequest {
   }
   
   func cancel() {
-    self.queue.async {
-      self.imageOperation?.cancel()
-      self.jsonOperation?.cancel()
-    }
+    self.imageOperation?.cancel()
+    self.jsonOperation?.cancel()
   }
   
   func request(resultHandler: @escaping (UIImage?, Error?) -> Void) {
     self.queue.async {
+      var image: UIImage?
+      
+      var resource: String?
       if let request = URLRequest(string: self.image, cachePolicy: .reloadIgnoringLocalCacheData) {
-        let jsonOperation = NBARNetwork.JSONOperation(with: request, options: []) { [weak self] result, response, error in
+        let jsonOperation = NBARNetwork.JSONOperation(with: request, options: []) { result, response, error in
           if let result = result {
-            if let self = self,
-               let sequences = (((result as? NSDictionary)?.object(forKey: "sequences")) as? NSArray),
+            if let sequences = (((result as? NSDictionary)?.object(forKey: "sequences")) as? NSArray),
                sequences.count != 0,
                let canvases = (((sequences.object(at: 0) as? NSDictionary)?.object(forKey: "canvases")) as? NSArray),
                canvases.count != 0,
                let images = (((canvases.object(at: 0) as? NSDictionary)?.object(forKey: "images")) as? NSArray),
-               images.count != 0,
-               let resource = (((((images.object(at: 0) as? NSDictionary)?.object(forKey: "resource")) as? NSDictionary)?.object(forKey: "@id")) as? String) {
-              let resource = resource.replacingOccurrences(of: "/full/full/0", with: "/full/1080,/0")
-              self.queue.async {
-                if let request = URLRequest(string: resource, cachePolicy: .returnCacheDataElseLoad) {
-                  let imageOperation = NBARNetwork.ImageOperation(with: request, scale: 1.0) { result, response, error in
-                    if let result = result {
-                      resultHandler(result, nil)
-                    } else {
-                      print(response)
-                      if let error = error {
-                        print(error)
-                      }
-                      resultHandler(nil, error)
-                    }
-                  }
-                  
-                  imageOperation.resume()
-                  self.imageOperation = imageOperation
-                } else {
-                  resultHandler(nil, nil)
-                }
-              }
-            } else {
-              print(response)
-              resultHandler(nil, nil)
+               images.count != 0 {
+              resource = (((((images.object(at: 0) as? NSDictionary)?.object(forKey: "resource")) as? NSDictionary)?.object(forKey: "@id")) as? String)?.replacingOccurrences(of: "/full/full/0", with: "/full/1080,/0")
             }
           } else {
             print(response)
             if let error = error {
               print(error)
             }
-            resultHandler(nil, error)
           }
+          self.semaphore.signal()
         }
         
-        jsonOperation.resume()
         self.jsonOperation = jsonOperation
-      } else  {
-        resultHandler(nil, nil)
+        self.jsonOperation?.resume()
+        self.semaphore.wait()
       }
+      
+      if let resource = resource {
+        if let request = URLRequest(string: resource, cachePolicy: .returnCacheDataElseLoad) {
+          let imageOperation = NBARNetwork.ImageOperation(with: request, scale: 1.0) { result, response, error in
+            if let result = result {
+              image = result
+            } else {
+              print(response)
+              if let error = error {
+                print(error)
+              }
+            }
+            self.semaphore.signal()
+          }
+          
+          self.imageOperation = imageOperation
+          self.imageOperation?.resume()
+          self.semaphore.wait()
+        }
+      }
+      
+      resultHandler(image, nil)
     }
   }
 }
