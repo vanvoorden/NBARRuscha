@@ -29,10 +29,10 @@ func URLTestDouble() -> Foundation.URL {
 
 final class NBARNetworkTests : XCTestCase {
   func testImageOperation() {
-    XCTAssert(NBARNetwork.ImageOperation.self === NBARNetworkImageOperation<NBARNetworkDataTask<NBARNetworkSession<URLSession>>, NBARNetworkImageHandler<NBARNetworkDataHandler,NBARNetworkImageSerialization<UIImage>>>.self)
+    XCTAssert(NBARNetwork.ImageOperation.self === NBARNetworkImageOperation<NBARNetworkDataTask<NBARNetworkSession<Foundation.URLSession>>, NBARNetworkImageHandler<NBARNetworkDataHandler,NBARNetworkImageSerialization<UIKit.UIImage>>>.self)
   }
   
   func testJSONOperation() {
-    XCTAssert(NBARNetwork.JSONOperation.self === NBARNetworkJSONOperation<NBARNetworkDataTask<NBARNetworkSession<URLSession>>, NBARNetworkJSONHandler<NBARNetworkDataHandler, JSONSerialization>>.self)
+    XCTAssert(NBARNetwork.JSONOperation.self === NBARNetworkJSONOperation<NBARNetworkDataTask<NBARNetworkSession<Foundation.URLSession>>, NBARNetworkJSONHandler<NBARNetworkDataHandler, Foundation.JSONSerialization>>.self)
   }
 }

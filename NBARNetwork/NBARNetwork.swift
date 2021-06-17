@@ -13,8 +13,8 @@ extension Foundation.JSONSerialization : NBARNetworkJSONHandlerJSONSerialization
 }
 
 extension Foundation.URLRequest {
-  init?(string: String, cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy, timeoutInterval: TimeInterval = 60.0) {
-    if let url = URL(string: string) {
+  init?(string: String, cachePolicy: Foundation.URLRequest.CachePolicy = .useProtocolCachePolicy, timeoutInterval: Foundation.TimeInterval = 60.0) {
+    if let url = Foundation.URL(string: string) {
       self.init(url: url, cachePolicy: cachePolicy, timeoutInterval: timeoutInterval)
     } else {
       return nil
@@ -35,6 +35,6 @@ extension UIKit.UIImage : NBARNetworkImageSerializationImage {
 }
 
 struct NBARNetwork {
-  typealias ImageOperation = NBARNetworkImageOperation<NBARNetworkDataTask<NBARNetworkSession<URLSession>>, NBARNetworkImageHandler<NBARNetworkDataHandler,NBARNetworkImageSerialization<UIImage>>>
-  typealias JSONOperation = NBARNetworkJSONOperation<NBARNetworkDataTask<NBARNetworkSession<URLSession>>, NBARNetworkJSONHandler<NBARNetworkDataHandler, JSONSerialization>>
+  typealias ImageOperation = NBARNetworkImageOperation<NBARNetworkDataTask<NBARNetworkSession<Foundation.URLSession>>, NBARNetworkImageHandler<NBARNetworkDataHandler,NBARNetworkImageSerialization<UIKit.UIImage>>>
+  typealias JSONOperation = NBARNetworkJSONOperation<NBARNetworkDataTask<NBARNetworkSession<Foundation.URLSession>>, NBARNetworkJSONHandler<NBARNetworkDataHandler, Foundation.JSONSerialization>>
 }
