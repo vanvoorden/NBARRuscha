@@ -243,24 +243,24 @@ private struct NBARRuschaPickerAboutRow : View {
 }
 
 private struct NBARRuschaPickerAboutSheet : View {
-  @Binding private var url: URL?
-  @Binding private var isSheetPresented: Bool
+  private var url: Binding<URL?>
+  private var isSheetPresented: Binding<Bool>
   
   var body: some View {
-    if let url = self.url {
+    if let url = self.url.wrappedValue {
       NBARRuschaWebView(url: url)
     } else {
       Color(
         .systemBackground
       ).onTapGesture {
-        self.isSheetPresented.toggle()
+        self.isSheetPresented.wrappedValue.toggle()
       }
     }
   }
   
   init(url: Binding<URL?>, isSheetPresented: Binding<Bool>) {
-    self._url = url
-    self._isSheetPresented = isSheetPresented
+    self.url = url
+    self.isSheetPresented = isSheetPresented
   }
 }
 

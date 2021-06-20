@@ -121,10 +121,7 @@ struct NBARRuschaContentView : View {
               self.isEditing.toggle()
             }
           ) {
-            Label(
-              "Info",
-              systemImage: "info.circle"
-            )
+            Label("Info", systemImage: "info.circle")
           }.disabled(
             self.model.anchors.count == 0
           )
@@ -137,10 +134,7 @@ struct NBARRuschaContentView : View {
               self.isSheetPresented.toggle()
             }
           ) {
-            Label(
-              "Photo",
-              systemImage: "photo"
-            )
+            Label("Photo", systemImage: "photo")
           }
         }
       }
