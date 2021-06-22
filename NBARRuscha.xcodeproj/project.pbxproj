@@ -71,8 +71,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		AE065FEB2668C20B0096C79C /* ACKNOWLEDGMENTS.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ACKNOWLEDGMENTS.txt; sourceTree = "<group>"; };
-		AE065FEC2668C20B0096C79C /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		AE065FED2668C2130096C79C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AE3C513F26684B3A0043E3D1 /* NBARRuscha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NBARRuscha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE3C514226684B3A0043E3D1 /* NBARRuschaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBARRuschaApp.swift; sourceTree = "<group>"; };
@@ -125,20 +123,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AE065FEA2668C20B0096C79C /* LICENSE */ = {
-			isa = PBXGroup;
-			children = (
-				AE065FEB2668C20B0096C79C /* ACKNOWLEDGMENTS.txt */,
-				AE065FEC2668C20B0096C79C /* LICENSE.txt */,
-			);
-			path = LICENSE;
-			sourceTree = "<group>";
-		};
 		AE3C513626684B3A0043E3D1 = {
 			isa = PBXGroup;
 			children = (
 				AEF39E1D26800B4900FB8ADD /* Frameworks */,
-				AE065FEA2668C20B0096C79C /* LICENSE */,
 				AE82B0012676D27B00F9FE82 /* NBARNetwork */,
 				AE82B0162676D2A100F9FE82 /* NBARNetworkTests */,
 				AE3C514126684B3A0043E3D1 /* NBARRuscha */,
