@@ -71,7 +71,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		AE065FED2668C2130096C79C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AE3C513F26684B3A0043E3D1 /* NBARRuscha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NBARRuscha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE3C514226684B3A0043E3D1 /* NBARRuschaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBARRuschaApp.swift; sourceTree = "<group>"; };
 		AE3C514B26684B3B0043E3D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -132,7 +131,6 @@
 				AE3C514126684B3A0043E3D1 /* NBARRuscha */,
 				AE3C515326684B3B0043E3D1 /* NBARRuschaTests */,
 				AE3C514026684B3A0043E3D1 /* Products */,
-				AE065FED2668C2130096C79C /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
