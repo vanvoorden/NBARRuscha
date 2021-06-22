@@ -14,7 +14,7 @@
 import NBARKit
 import UIKit
 
-extension NBARRuschaPickerResult : NBARPhotosAnchor {
+extension NBARRuschaPickerResult : NBARPhotosViewAnchor {
   
 }
 
@@ -40,7 +40,7 @@ final class NBARRuschaDataModel : ObservableObject {
 }
 
 extension NBARRuschaDataModel : NBARPhotosViewDataModel {
-  var anchors: Array<NBARPhotosAnchor> {
+  var anchors: Array<NBARPhotosViewAnchor> {
     return Array(self.resultsDictionary.values)
   }
   
@@ -51,7 +51,7 @@ extension NBARRuschaDataModel : NBARPhotosViewDataModel {
     }
   }
   
-  func placeholder(for anchor: NBARPhotosAnchor) -> UIImage? {
+  func placeholder(for anchor: NBARPhotosViewAnchor) -> UIImage? {
     if let image = self.resultsDictionary[anchor.id]?.image,
        let request = URLRequest(string: image, cachePolicy: .returnCacheDataElseLoad),
        URLCache.shared.cachedResponse(for: request) != nil {
@@ -60,7 +60,7 @@ extension NBARRuschaDataModel : NBARPhotosViewDataModel {
     return UIImage(named: "Getty.png")
   }
   
-  func requestImage(for anchor: NBARPhotosAnchor, resultHandler: @escaping (UIImage?, Dictionary<AnyHashable, Any>?) -> Void) -> UUID? {
+  func requestImage(for anchor: NBARPhotosViewAnchor, resultHandler: @escaping (UIImage?, Error?) -> Void) -> UUID? {
     if self.requestsDictionary[anchor.id] == nil,
        let image = self.resultsDictionary[anchor.id]?.image {
       let request = NBARRuschaDataModelImageRequest(image)
