@@ -25,7 +25,7 @@ protocol NBARNetworkSessionURLSession {
   
   static var shared: Self.URLSession { get }
   
-  typealias CompletionHandler = (Foundation.Data?, Foundation.URLResponse?, Swift.Error?) -> Swift.Void
+  typealias CompletionHandler = @Sendable (Foundation.Data?, Foundation.URLResponse?, Swift.Error?) -> Swift.Void
   
   func dataTask(with request: Foundation.URLRequest, completionHandler: @escaping Self.CompletionHandler) -> Self.DataTask
 }

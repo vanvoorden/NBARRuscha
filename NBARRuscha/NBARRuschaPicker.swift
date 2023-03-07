@@ -223,7 +223,7 @@ private struct NBARRuschaPickerAboutRow : View {
     ZStack(
       alignment: .leading
     ) {
-      Color(.systemBackground)
+      Color(.secondarySystemGroupedBackground)
       HStack {
         Text(self.text)
         Spacer()
@@ -251,7 +251,7 @@ private struct NBARRuschaPickerAboutSheet : View {
       NBARRuschaWebView(url: url)
     } else {
       Color(
-        .systemBackground
+        .systemGroupedBackground
       ).onTapGesture {
         self.isSheetPresented.wrappedValue.toggle()
       }

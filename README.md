@@ -1,4 +1,4 @@
-# Ruscha AR 0.3
+# Ruscha AR 0.4
 
 Browse the streets of Los Angeles on an Augmented Reality historical walking tour. Explore Hollywood through the photos of Ed Ruscha. The Getty Research Institute digitized and geo-tagged almost 100,000 photos we can draw in live 3D.
 

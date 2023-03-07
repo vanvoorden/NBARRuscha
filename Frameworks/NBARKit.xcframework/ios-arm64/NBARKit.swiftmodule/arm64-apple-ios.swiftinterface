@@ -1,11 +1,15 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.4 (swiftlang-1205.0.26.9 clang-1205.0.19.55)
+// swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
 // swift-module-flags: -target arm64-apple-ios14.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name NBARKit
+// swift-module-flags-ignorable: -enable-bare-slash-regex
 import ARKit
 import Combine
+import CoreLocation
 import Swift
 import SwiftUI
-public protocol NBARPhotosAnchor {
+import _Concurrency
+import _StringProcessing
+public protocol NBARPhotosViewAnchor {
   var id: Foundation.UUID { get }
   var altitude: CoreLocation.CLLocationDistance? { get }
   var coordinate: CoreLocation.CLLocationCoordinate2D { get }
@@ -14,15 +18,15 @@ public protocol NBARPhotosAnchor {
   var pixelWidth: Swift.Int? { get }
 }
 public protocol NBARPhotosViewDataModel : Combine.ObservableObject {
-  var anchors: Swift.Array<NBARKit.NBARPhotosAnchor> { get }
+  var anchors: Swift.Array<NBARKit.NBARPhotosViewAnchor> { get }
   func cancelImageRequest(for id: Foundation.UUID)
-  func placeholder(for anchor: NBARKit.NBARPhotosAnchor) -> UIKit.UIImage?
-  func requestImage(for anchor: NBARKit.NBARPhotosAnchor, resultHandler: @escaping (UIKit.UIImage?, Swift.Dictionary<Swift.AnyHashable, Any>?) -> Swift.Void) -> Foundation.UUID?
+  func placeholder(for anchor: NBARKit.NBARPhotosViewAnchor) -> UIKit.UIImage?
+  func requestImage(for anchor: NBARKit.NBARPhotosViewAnchor, resultHandler: @escaping (UIKit.UIImage?, Swift.Error?) -> Swift.Void) -> Foundation.UUID?
 }
-public struct NBARPhotosView<DataModel> : SwiftUI.View where DataModel : NBARKit.NBARPhotosViewDataModel {
-  public var body: some SwiftUI.View {
+@_Concurrency.MainActor(unsafe) public struct NBARPhotosView<DataModel> : SwiftUI.View where DataModel : NBARKit.NBARPhotosViewDataModel {
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
     get
   }
-  public init(model: DataModel, isEditing: Swift.Bool)
-  public typealias Body = @_opaqueReturnTypeOf("$s7NBARKit14NBARPhotosViewV4bodyQrvp", 0) 🦸<DataModel>
+  @_Concurrency.MainActor(unsafe) public init(model: DataModel, isEditing: Swift.Bool)
+  public typealias Body = @_opaqueReturnTypeOf("$s7NBARKit14NBARPhotosViewV4bodyQrvp", 0) __<DataModel>
 }

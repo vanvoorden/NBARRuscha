@@ -1,0 +1,827 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "TopLevel",
+    "printedName": "TopLevel",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "Combine",
+        "printedName": "Combine",
+        "declKind": "Import",
+        "moduleName": "NBARKit",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "CoreLocation",
+        "printedName": "CoreLocation",
+        "declKind": "Import",
+        "moduleName": "NBARKit"
+      },
+      {
+        "kind": "Import",
+        "name": "SwiftUI",
+        "printedName": "SwiftUI",
+        "declKind": "Import",
+        "moduleName": "NBARKit"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "NBARPhotosViewAnchor",
+        "printedName": "NBARPhotosViewAnchor",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "id",
+            "printedName": "id",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UUID",
+                "printedName": "Foundation.UUID",
+                "usr": "s:10Foundation4UUIDV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:7NBARKit20NBARPhotosViewAnchorP2id10Foundation4UUIDVvp",
+            "mangledName": "$s7NBARKit20NBARPhotosViewAnchorP2id10Foundation4UUIDVvp",
+            "moduleName": "NBARKit",
+            "protocolReq": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UUID",
+                    "printedName": "Foundation.UUID",
+                    "usr": "s:10Foundation4UUIDV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7NBARKit20NBARPhotosViewAnchorP2id10Foundation4UUIDVvg",
+                "mangledName": "$s7NBARKit20NBARPhotosViewAnchorP2id10Foundation4UUIDVvg",
+                "moduleName": "NBARKit",
+                "genericSig": "<τ_0_0 where τ_0_0 : NBARKit.NBARPhotosViewAnchor>",
+                "sugared_genericSig": "<Self where Self : NBARKit.NBARPhotosViewAnchor>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "altitude",
+            "printedName": "altitude",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Double?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Double",
+                    "printedName": "Swift.Double",
+                    "usr": "s:Sd"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:7NBARKit20NBARPhotosViewAnchorP8altitudeSdSgvp",
+            "mangledName": "$s7NBARKit20NBARPhotosViewAnchorP8altitudeSdSgvp",
+            "moduleName": "NBARKit",
+            "protocolReq": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Double?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Double",
+                        "printedName": "Swift.Double",
+                        "usr": "s:Sd"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7NBARKit20NBARPhotosViewAnchorP8altitudeSdSgvg",
+                "mangledName": "$s7NBARKit20NBARPhotosViewAnchorP8altitudeSdSgvg",
+                "moduleName": "NBARKit",
+                "genericSig": "<τ_0_0 where τ_0_0 : NBARKit.NBARPhotosViewAnchor>",
+                "sugared_genericSig": "<Self where Self : NBARKit.NBARPhotosViewAnchor>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "coordinate",
+            "printedName": "coordinate",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CLLocationCoordinate2D",
+                "printedName": "CoreLocation.CLLocationCoordinate2D",
+                "usr": "c:@S@CLLocationCoordinate2D"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:7NBARKit20NBARPhotosViewAnchorP10coordinateSo22CLLocationCoordinate2DVvp",
+            "mangledName": "$s7NBARKit20NBARPhotosViewAnchorP10coordinateSo22CLLocationCoordinate2DVvp",
+            "moduleName": "NBARKit",
+            "protocolReq": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CLLocationCoordinate2D",
+                    "printedName": "CoreLocation.CLLocationCoordinate2D",
+                    "usr": "c:@S@CLLocationCoordinate2D"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7NBARKit20NBARPhotosViewAnchorP10coordinateSo22CLLocationCoordinate2DVvg",
+                "mangledName": "$s7NBARKit20NBARPhotosViewAnchorP10coordinateSo22CLLocationCoordinate2DVvg",
+                "moduleName": "NBARKit",
+                "genericSig": "<τ_0_0 where τ_0_0 : NBARKit.NBARPhotosViewAnchor>",
+                "sugared_genericSig": "<Self where Self : NBARKit.NBARPhotosViewAnchor>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "course",
+            "printedName": "course",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Double",
+                "printedName": "Swift.Double",
+                "usr": "s:Sd"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:7NBARKit20NBARPhotosViewAnchorP6courseSdvp",
+            "mangledName": "$s7NBARKit20NBARPhotosViewAnchorP6courseSdvp",
+            "moduleName": "NBARKit",
+            "protocolReq": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Double",
+                    "printedName": "Swift.Double",
+                    "usr": "s:Sd"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7NBARKit20NBARPhotosViewAnchorP6courseSdvg",
+                "mangledName": "$s7NBARKit20NBARPhotosViewAnchorP6courseSdvg",
+                "moduleName": "NBARKit",
+                "genericSig": "<τ_0_0 where τ_0_0 : NBARKit.NBARPhotosViewAnchor>",
+                "sugared_genericSig": "<Self where Self : NBARKit.NBARPhotosViewAnchor>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "pixelHeight",
+            "printedName": "pixelHeight",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Int?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:7NBARKit20NBARPhotosViewAnchorP11pixelHeightSiSgvp",
+            "mangledName": "$s7NBARKit20NBARPhotosViewAnchorP11pixelHeightSiSgvp",
+            "moduleName": "NBARKit",
+            "protocolReq": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Int?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Int",
+                        "printedName": "Swift.Int",
+                        "usr": "s:Si"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7NBARKit20NBARPhotosViewAnchorP11pixelHeightSiSgvg",
+                "mangledName": "$s7NBARKit20NBARPhotosViewAnchorP11pixelHeightSiSgvg",
+                "moduleName": "NBARKit",
+                "genericSig": "<τ_0_0 where τ_0_0 : NBARKit.NBARPhotosViewAnchor>",
+                "sugared_genericSig": "<Self where Self : NBARKit.NBARPhotosViewAnchor>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "pixelWidth",
+            "printedName": "pixelWidth",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Int?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:7NBARKit20NBARPhotosViewAnchorP10pixelWidthSiSgvp",
+            "mangledName": "$s7NBARKit20NBARPhotosViewAnchorP10pixelWidthSiSgvp",
+            "moduleName": "NBARKit",
+            "protocolReq": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Int?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Int",
+                        "printedName": "Swift.Int",
+                        "usr": "s:Si"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7NBARKit20NBARPhotosViewAnchorP10pixelWidthSiSgvg",
+                "mangledName": "$s7NBARKit20NBARPhotosViewAnchorP10pixelWidthSiSgvg",
+                "moduleName": "NBARKit",
+                "genericSig": "<τ_0_0 where τ_0_0 : NBARKit.NBARPhotosViewAnchor>",
+                "sugared_genericSig": "<Self where Self : NBARKit.NBARPhotosViewAnchor>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "s:7NBARKit20NBARPhotosViewAnchorP",
+        "mangledName": "$s7NBARKit20NBARPhotosViewAnchorP",
+        "moduleName": "NBARKit",
+        "declAttributes": [
+          "AccessControl"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "NBARPhotosViewDataModel",
+        "printedName": "NBARPhotosViewDataModel",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "anchors",
+            "printedName": "anchors",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[NBARKit.NBARPhotosViewAnchor]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NBARPhotosViewAnchor",
+                    "printedName": "NBARKit.NBARPhotosViewAnchor",
+                    "usr": "s:7NBARKit20NBARPhotosViewAnchorP"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:7NBARKit23NBARPhotosViewDataModelP7anchorsSayAA0bC6Anchor_pGvp",
+            "mangledName": "$s7NBARKit23NBARPhotosViewDataModelP7anchorsSayAA0bC6Anchor_pGvp",
+            "moduleName": "NBARKit",
+            "protocolReq": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[NBARKit.NBARPhotosViewAnchor]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NBARPhotosViewAnchor",
+                        "printedName": "NBARKit.NBARPhotosViewAnchor",
+                        "usr": "s:7NBARKit20NBARPhotosViewAnchorP"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7NBARKit23NBARPhotosViewDataModelP7anchorsSayAA0bC6Anchor_pGvg",
+                "mangledName": "$s7NBARKit23NBARPhotosViewDataModelP7anchorsSayAA0bC6Anchor_pGvg",
+                "moduleName": "NBARKit",
+                "genericSig": "<τ_0_0 where τ_0_0 : NBARKit.NBARPhotosViewDataModel>",
+                "sugared_genericSig": "<Self where Self : NBARKit.NBARPhotosViewDataModel>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "cancelImageRequest",
+            "printedName": "cancelImageRequest(for:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UUID",
+                "printedName": "Foundation.UUID",
+                "usr": "s:10Foundation4UUIDV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7NBARKit23NBARPhotosViewDataModelP18cancelImageRequest3fory10Foundation4UUIDV_tF",
+            "mangledName": "$s7NBARKit23NBARPhotosViewDataModelP18cancelImageRequest3fory10Foundation4UUIDV_tF",
+            "moduleName": "NBARKit",
+            "genericSig": "<τ_0_0 where τ_0_0 : NBARKit.NBARPhotosViewDataModel>",
+            "sugared_genericSig": "<Self where Self : NBARKit.NBARPhotosViewDataModel>",
+            "protocolReq": true,
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "placeholder",
+            "printedName": "placeholder(for:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIImage?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIImage",
+                    "printedName": "UIKit.UIImage",
+                    "usr": "c:objc(cs)UIImage"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "NBARPhotosViewAnchor",
+                "printedName": "NBARKit.NBARPhotosViewAnchor",
+                "usr": "s:7NBARKit20NBARPhotosViewAnchorP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7NBARKit23NBARPhotosViewDataModelP11placeholder3forSo7UIImageCSgAA0bC6Anchor_p_tF",
+            "mangledName": "$s7NBARKit23NBARPhotosViewDataModelP11placeholder3forSo7UIImageCSgAA0bC6Anchor_p_tF",
+            "moduleName": "NBARKit",
+            "genericSig": "<τ_0_0 where τ_0_0 : NBARKit.NBARPhotosViewDataModel>",
+            "sugared_genericSig": "<Self where Self : NBARKit.NBARPhotosViewDataModel>",
+            "protocolReq": true,
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "requestImage",
+            "printedName": "requestImage(for:resultHandler:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.UUID?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UUID",
+                    "printedName": "Foundation.UUID",
+                    "usr": "s:10Foundation4UUIDV"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "NBARPhotosViewAnchor",
+                "printedName": "NBARKit.NBARPhotosViewAnchor",
+                "usr": "s:7NBARKit20NBARPhotosViewAnchorP"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(UIKit.UIImage?, Swift.Error?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(UIKit.UIImage?, Swift.Error?)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "UIKit.UIImage?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "UIImage",
+                            "printedName": "UIKit.UIImage",
+                            "usr": "c:objc(cs)UIImage"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.Error?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Error",
+                            "printedName": "Swift.Error",
+                            "usr": "s:s5ErrorP"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7NBARKit23NBARPhotosViewDataModelP12requestImage3for13resultHandler10Foundation4UUIDVSgAA0bC6Anchor_p_ySo7UIImageCSg_s5Error_pSgtctF",
+            "mangledName": "$s7NBARKit23NBARPhotosViewDataModelP12requestImage3for13resultHandler10Foundation4UUIDVSgAA0bC6Anchor_p_ySo7UIImageCSg_s5Error_pSgtctF",
+            "moduleName": "NBARKit",
+            "genericSig": "<τ_0_0 where τ_0_0 : NBARKit.NBARPhotosViewDataModel>",
+            "sugared_genericSig": "<Self where Self : NBARKit.NBARPhotosViewDataModel>",
+            "protocolReq": true,
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "s:7NBARKit23NBARPhotosViewDataModelP",
+        "mangledName": "$s7NBARKit23NBARPhotosViewDataModelP",
+        "moduleName": "NBARKit",
+        "genericSig": "<τ_0_0 : Combine.ObservableObject>",
+        "sugared_genericSig": "<Self : Combine.ObservableObject>",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "ObservableObject",
+            "printedName": "ObservableObject",
+            "usr": "s:7Combine16ObservableObjectP",
+            "mangledName": "$s7Combine16ObservableObjectP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "NBARPhotosView",
+        "printedName": "NBARPhotosView",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "body",
+            "printedName": "body",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "OpaqueTypeArchetype",
+                "printedName": "some SwiftUI.View",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "View",
+                    "printedName": "SwiftUI.View",
+                    "usr": "s:7SwiftUI4ViewP"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:7NBARKit14NBARPhotosViewV4bodyQrvp",
+            "mangledName": "$s7NBARKit14NBARPhotosViewV4bodyQrvp",
+            "moduleName": "NBARKit",
+            "declAttributes": [
+              "Custom",
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OpaqueTypeArchetype",
+                    "printedName": "some SwiftUI.View",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "View",
+                        "printedName": "SwiftUI.View",
+                        "usr": "s:7SwiftUI4ViewP"
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7NBARKit14NBARPhotosViewV4bodyQrvg",
+                "mangledName": "$s7NBARKit14NBARPhotosViewV4bodyQrvg",
+                "moduleName": "NBARKit",
+                "genericSig": "<τ_0_0 where τ_0_0 : NBARKit.NBARPhotosViewDataModel>",
+                "sugared_genericSig": "<DataModel where DataModel : NBARKit.NBARPhotosViewDataModel>",
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(model:isEditing:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "NBARPhotosView",
+                "printedName": "NBARKit.NBARPhotosView<τ_0_0>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  }
+                ],
+                "usr": "s:7NBARKit14NBARPhotosViewV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GenericTypeParam",
+                "printedName": "τ_0_0"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:7NBARKit14NBARPhotosViewV5model9isEditingACyxGx_Sbtcfc",
+            "mangledName": "$s7NBARKit14NBARPhotosViewV5model9isEditingACyxGx_Sbtcfc",
+            "moduleName": "NBARKit",
+            "genericSig": "<τ_0_0 where τ_0_0 : NBARKit.NBARPhotosViewDataModel>",
+            "sugared_genericSig": "<DataModel where DataModel : NBARKit.NBARPhotosViewDataModel>",
+            "declAttributes": [
+              "Custom",
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:7NBARKit14NBARPhotosViewV",
+        "mangledName": "$s7NBARKit14NBARPhotosViewV",
+        "moduleName": "NBARKit",
+        "genericSig": "<τ_0_0 where τ_0_0 : NBARKit.NBARPhotosViewDataModel>",
+        "sugared_genericSig": "<DataModel where DataModel : NBARKit.NBARPhotosViewDataModel>",
+        "declAttributes": [
+          "Custom",
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "View",
+            "printedName": "View",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "Body",
+                "printedName": "Body",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OpaqueTypeArchetype",
+                    "printedName": "some SwiftUI.View",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "View",
+                        "printedName": "SwiftUI.View",
+                        "usr": "s:7SwiftUI4ViewP"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "usr": "s:7SwiftUI4ViewP",
+            "mangledName": "$s7SwiftUI4ViewP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "ARKit",
+        "printedName": "ARKit",
+        "declKind": "Import",
+        "moduleName": "NBARKit",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Combine",
+        "printedName": "Combine",
+        "declKind": "Import",
+        "moduleName": "NBARKit"
+      },
+      {
+        "kind": "Import",
+        "name": "SwiftUI",
+        "printedName": "SwiftUI",
+        "declKind": "Import",
+        "moduleName": "NBARKit"
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/rick\/Developer\/NBARPhotosView\/NBARKit\/NBARPhotosView.swift",
+      "kind": "StringLiteral",
+      "offset": 3336,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/rick\/Developer\/NBARPhotosView\/NBARKit\/NBARPhotosView.swift",
+      "kind": "FloatLiteral",
+      "offset": 3383,
+      "length": 4,
+      "value": "50.0"
+    },
+    {
+      "filePath": "\/Users\/rick\/Developer\/NBARPhotosView\/NBARKit\/NBARPhotosView.swift",
+      "kind": "FloatLiteral",
+      "offset": 3426,
+      "length": 4,
+      "value": "50.0"
+    },
+    {
+      "filePath": "\/Users\/rick\/Developer\/NBARPhotosView\/NBARKit\/NBARPhotosView.swift",
+      "kind": "FloatLiteral",
+      "offset": 3471,
+      "length": 4,
+      "value": "50.0"
+    },
+    {
+      "filePath": "\/Users\/rick\/Developer\/NBARPhotosView\/NBARKit\/NBARPhotosViewContainer.swift",
+      "kind": "BooleanLiteral",
+      "offset": 9106,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/rick\/Developer\/NBARPhotosView\/NBARKit\/NBARPhotosViewContainer.swift",
+      "kind": "BooleanLiteral",
+      "offset": 9151,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/rick\/Developer\/NBARPhotosView\/NBARKit\/NBARPhotosViewContainer.swift",
+      "kind": "BooleanLiteral",
+      "offset": 9192,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/rick\/Developer\/NBARPhotosView\/NBARKit\/NBARPhotosViewContainer.swift",
+      "kind": "StringLiteral",
+      "offset": 9420,
+      "length": 24,
+      "value": "\"anchorsToPhotosAnchors\""
+    },
+    {
+      "filePath": "\/Users\/rick\/Developer\/NBARPhotosView\/NBARKit\/NBARPhotosViewContainer.swift",
+      "kind": "BooleanLiteral",
+      "offset": 9813,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/rick\/Developer\/NBARPhotosView\/NBARKit\/NBARPhotosViewContainer.swift",
+      "kind": "BooleanLiteral",
+      "offset": 9910,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/rick\/Developer\/NBARPhotosView\/NBARKit\/NBARPhotosViewContainer.swift",
+      "kind": "StringLiteral",
+      "offset": 8422,
+      "length": 11,
+      "value": "\"NBARKit.Coordinator\""
+    }
+  ]
+}

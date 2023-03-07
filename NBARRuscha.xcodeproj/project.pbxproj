@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D67BF2F29B80045008B0BA1 /* NBARKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D67BF2E29B80045008B0BA1 /* NBARKit.xcframework */; };
+		1D67BF3029B80045008B0BA1 /* NBARKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D67BF2E29B80045008B0BA1 /* NBARKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AE3C514326684B3A0043E3D1 /* NBARRuschaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C514226684B3A0043E3D1 /* NBARRuschaApp.swift */; };
 		AE3C517826684BF40043E3D1 /* NBARRuschaWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C516F26684BF30043E3D1 /* NBARRuschaWebView.swift */; };
 		AE3C517D26684BF40043E3D1 /* NBARRuschaPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C517426684BF40043E3D1 /* NBARRuschaPicker.swift */; };
@@ -42,8 +44,6 @@
 		AE82B0332676D63C00F9FE82 /* NBARNetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82B0322676D63C00F9FE82 /* NBARNetworkTests.swift */; };
 		AE82B0382677002900F9FE82 /* NBARNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82B0372677002900F9FE82 /* NBARNetwork.swift */; };
 		AE82B0392677002900F9FE82 /* NBARNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82B0372677002900F9FE82 /* NBARNetwork.swift */; };
-		AEF39E222681A31200FB8ADD /* NBARKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEF39E202681A2D400FB8ADD /* NBARKit.xcframework */; };
-		AEF39E232681A31200FB8ADD /* NBARKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AEF39E202681A2D400FB8ADD /* NBARKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,7 +63,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				AEF39E232681A31200FB8ADD /* NBARKit.xcframework in Embed Frameworks */,
+				1D67BF3029B80045008B0BA1 /* NBARKit.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -71,6 +71,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1D67BF2E29B80045008B0BA1 /* NBARKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = NBARKit.xcframework; path = Frameworks/NBARKit.xcframework; sourceTree = "<group>"; };
 		AE3C513F26684B3A0043E3D1 /* NBARRuscha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NBARRuscha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE3C514226684B3A0043E3D1 /* NBARRuschaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBARRuschaApp.swift; sourceTree = "<group>"; };
 		AE3C514B26684B3B0043E3D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -100,7 +101,6 @@
 		AE82B01F2676D2A100F9FE82 /* NBARNetworkImageOperationTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBARNetworkImageOperationTestCase.swift; sourceTree = "<group>"; };
 		AE82B0322676D63C00F9FE82 /* NBARNetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBARNetworkTests.swift; sourceTree = "<group>"; };
 		AE82B0372677002900F9FE82 /* NBARNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBARNetwork.swift; sourceTree = "<group>"; };
-		AEF39E202681A2D400FB8ADD /* NBARKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = NBARKit.xcframework; path = NBARKit/NBARKit.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEF39E222681A31200FB8ADD /* NBARKit.xcframework in Frameworks */,
+				1D67BF2F29B80045008B0BA1 /* NBARKit.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,7 +201,7 @@
 		AEF39E1D26800B4900FB8ADD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AEF39E202681A2D400FB8ADD /* NBARKit.xcframework */,
+				1D67BF2E29B80045008B0BA1 /* NBARKit.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
