@@ -18,6 +18,9 @@ This project requires Xcode 12.5 or later. The following device requirements app
 * Launching the app, loading photos in AR, backgrounding the app for a long period of time, and activating the app back to the foreground can cause the previously loaded photos to disappear. Reloading the photos from the photo picker should place them back in AR space correctly.
 
 ## Release Notes
+### 0.4
+Update SDK to 0.2.
+
 ### 0.3
 * `NBARNetwork` replaces the previous networking logic.
 
