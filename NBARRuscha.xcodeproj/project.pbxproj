@@ -3,12 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D67BF2F29B80045008B0BA1 /* NBARKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D67BF2E29B80045008B0BA1 /* NBARKit.xcframework */; };
-		1D67BF3029B80045008B0BA1 /* NBARKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D67BF2E29B80045008B0BA1 /* NBARKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1D56CC702E81EBFB009BE019 /* NBARKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1D56CC6F2E81EBFB009BE019 /* NBARKit */; };
 		AE3C514326684B3A0043E3D1 /* NBARRuschaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C514226684B3A0043E3D1 /* NBARRuschaApp.swift */; };
 		AE3C517826684BF40043E3D1 /* NBARRuschaWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C516F26684BF30043E3D1 /* NBARRuschaWebView.swift */; };
 		AE3C517D26684BF40043E3D1 /* NBARRuschaPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C517426684BF40043E3D1 /* NBARRuschaPicker.swift */; };
@@ -63,7 +62,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1D67BF3029B80045008B0BA1 /* NBARKit.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -71,7 +69,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1D67BF2E29B80045008B0BA1 /* NBARKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = NBARKit.xcframework; path = Frameworks/NBARKit.xcframework; sourceTree = "<group>"; };
+		1D56CC712E81FE80009BE019 /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		1D56CC722E81FE80009BE019 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AE3C513F26684B3A0043E3D1 /* NBARRuscha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NBARRuscha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE3C514226684B3A0043E3D1 /* NBARRuschaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBARRuschaApp.swift; sourceTree = "<group>"; };
 		AE3C514B26684B3B0043E3D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -108,7 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D67BF2F29B80045008B0BA1 /* NBARKit.xcframework in Frameworks */,
+				1D56CC702E81EBFB009BE019 /* NBARKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,12 +124,13 @@
 		AE3C513626684B3A0043E3D1 = {
 			isa = PBXGroup;
 			children = (
-				AEF39E1D26800B4900FB8ADD /* Frameworks */,
+				1D56CC712E81FE80009BE019 /* LICENSE.txt */,
 				AE82B0012676D27B00F9FE82 /* NBARNetwork */,
 				AE82B0162676D2A100F9FE82 /* NBARNetworkTests */,
 				AE3C514126684B3A0043E3D1 /* NBARRuscha */,
 				AE3C515326684B3B0043E3D1 /* NBARRuschaTests */,
 				AE3C514026684B3A0043E3D1 /* Products */,
+				1D56CC722E81FE80009BE019 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -196,14 +196,6 @@
 				AE82B0322676D63C00F9FE82 /* NBARNetworkTests.swift */,
 			);
 			path = NBARNetworkTests;
-			sourceTree = "<group>";
-		};
-		AEF39E1D26800B4900FB8ADD /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1D67BF2E29B80045008B0BA1 /* NBARKit.xcframework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,6 +264,9 @@
 				Base,
 			);
 			mainGroup = AE3C513626684B3A0043E3D1;
+			packageReferences = (
+				1D56CC6E2E81EBFB009BE019 /* XCRemoteSwiftPackageReference "NBARKit" */,
+			);
 			productRefGroup = AE3C514026684B3A0043E3D1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -480,9 +475,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = WLPE3F9YYB;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 5;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = NBARRuscha/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -490,9 +485,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.4;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.northbronson.NBARRuscha;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -502,9 +498,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = WLPE3F9YYB;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 5;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = NBARRuscha/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -512,9 +508,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.4;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.northbronson.NBARRuscha;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -595,6 +592,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1D56CC6E2E81EBFB009BE019 /* XCRemoteSwiftPackageReference "NBARKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/vanvoorden/NBARKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1D56CC6F2E81EBFB009BE019 /* NBARKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1D56CC6E2E81EBFB009BE019 /* XCRemoteSwiftPackageReference "NBARKit" */;
+			productName = NBARKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AE3C513726684B3A0043E3D1 /* Project object */;
 }
